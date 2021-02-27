@@ -26,4 +26,26 @@ module.exports = function (app) {
   app.get("/members", isAuthenticated, (req, res) => {
     res.sendFile(path.join(__dirname, "../public/members.html"));
   });
+  // ***************** ROUTES FOR HTML PAGES *****************
+
+  // Directs to add-route HTML file
+  app.get("/add-route", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/add-route.html"));
+  });
+  // Directs to all-routes HTML file
+  app.get("/all-routes", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/all-routes.html"));
+  });
+  // Directs to author HTML file
+  app.get("/author", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/author.html"));
+  });
+  // Directs to directions HTML file
+  app.get("/directions", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/directions.html"));
+  });
+  // Directs to the settings HTML file
+  app.get("/add-route", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/settings.html"));
+  });
 };
