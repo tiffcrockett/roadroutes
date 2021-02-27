@@ -50,4 +50,29 @@ module.exports = function (app) {
       });
     }
   });
+  // GET route
+  app.get("api/posts", function (req, res) {
+    db.Routes.findAll({}).then(function (dbPost) {
+      res.json(dbPost);
+    });
+  });
+  // GET
+  app.get("/api/posts/:id", function (req, res) {
+    db.Routes.findOne({
+      where: {
+        id: req.params.id,
+      },
+    }).then(function (dbPost) {
+      res.json(dbPost);
+    });
+  });
+  app.get("api/posts/:routeCity", function (req, res) {
+    db.Routes.findOne({
+      where: {
+        routeCity: req.params.routeCity,
+      },
+    }).then(function (dbPost) {
+      res.json(dbPost);
+    });
+  });
 };
