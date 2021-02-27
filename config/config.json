@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "H0ldth3Door?",
+    "password": "password",
     "database": "roadroutes_db",
     "host": "127.0.0.1",
     "port": 3306,
@@ -9,7 +9,7 @@
   },
   "test": {
     "username": "root",
-    "password": null,
+    "password": "password",
     "database": "roadroutes_db",
     "host": "127.0.0.1",
     "port": 3306,
