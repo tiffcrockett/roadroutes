@@ -1,0 +1,51 @@
+config
+    |_ middleware
+    |     |_isAuthenticated.js
+
+    |_ config.json
+    |_passport.json 
+
+db 
+    |_schema.sql 
+
+models
+    |_add-route.js
+    |_all-routes.js
+    |_author.js (author-manager.js)
+    |_index.js (from user signin)
+    |_index.js (from blog - rename)
+    |_user (user signin)
+    |_post.js (from blog) 
+
+node_modules
+
+public
+    |_js
+        |_add-route.js
+        |_all-routes.js 
+        |_author.js 
+        |_directions.js
+        |_login.js
+        |_members.js 
+        |_settings.js
+        |_signup.js
+    |_stylesheets 
+        |_style.css
+    |_add-route.html (cms.html) 
+    |_all-routes.html (blog.html)
+    |_authors.html (author-manager.html) 
+    |_directions.html
+    |_login.html
+    |_members.html
+    |_signup.html 
+
+routes   
+    |_api-routes.js
+    |_html-routes.js (combine)
+    |_author-api-routes.js
+    |_post-api-routes.js
+
+package.json 
+package-lock.json
+
+server.js
