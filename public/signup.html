@@ -1,49 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <title>Passport Authentication</title>
+<head> 
+  <title>roadroutes | Sign Up</title>
+  <link rel= "icon" href= "images/rdrtlogo-removebg.png" type="image/png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
-  <link href="stylesheets/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="stylesheets/signup.css">
 </head>
 
-<body>
+<body> 
   <nav class="navbar navbar-default">
     <div class="container-fluid">
-      <div class="navbar-header">
-      </div>
+      <div class="navbar-header"></div> 
     </div>
   </nav>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Sign Up Form</h2>
-        <form class="signup">
+  <div class="container-fluid">
+      <div class="card" id="header">
+        <div class="row">
+          <h1>roadroutes</h1>
+          <img src="images/rdrtlogo-removebg.png" alt="bicycle clipart logo" id="logo"/>
+        </div>
+      </div>
+    
+    <div class="row" id="signup">
+      <div class="col-md-5 col-md-offset-3"> 
+        <h5 class="text-white text-right"><em>Great rides await!</em></h5>
+        <form class="signup"> 
+          <div class="form-row">
+            <div class="col">
+              <label for="inputFirstName">First Name</label>
+              <input type="text" class="form-control" id="firstname">
+            </div>
+            <div class="col">
+              <label for="inputLastName">Last Name</label>
+              <input type="text" class="form-control" id="lastname">
+            </div>
+          </div> 
+          <div class="form-row">
+            <div class="col">
+              <label for="inputCity">City</label>
+              <input id="city" class="form-control">
+            </div>
+            <div class="col-4"> 
+              <label for="inputState">State</label>
+              <select id="state" class="form-control">
+                <option selected></option>
+                <option>AL</option>
+                <option>AK</option>
+                <option>AZ</option>
+                <option>AR</option>
+                <option>CA</option>
+                <option>CO</option>
+                <option>CT</option>
+                <option>DE</option>
+                <option>FL</option>
+                <option>GA</option>
+                <option>HI</option>
+                <option>ID</option>
+                <option>IL</option>
+                <option>IN</option>
+                <option>IA</option>
+                <option>KS</option>
+                <option>KY</option>
+                <option>LA</option>
+                <option>ME</option>
+                <option>MD</option>
+                <option>MA</option>
+                <option>MI</option>
+                <option>MN</option>
+                <option>MS</option>
+                <option>MO</option>
+                <option>MT</option>
+                <option>NE</option>
+                <option>NV</option>
+                <option>NH</option>
+                <option>NJ</option>
+                <option>NM</option> 
+                <option>NY</option>
+                <option>NC</option>
+                <option>ND</option>
+                <option>OH</option>
+                <option>OK</option>
+                <option>OR</option>
+                <option>PA</option>
+                <option>RI</option>
+                <option>SC</option>
+                <option>SD</option>
+                <option>TN</option>
+                <option>TX</option>
+                <option>UT</option>
+                <option>VT</option>
+                <option>VA</option>
+                <option>WA</option>
+                <option>WV</option>
+                <option>WI</option>
+                <option>WY</option>
+              </select>
+            </div>
+            <div class="col-3">
+              <label for="inputZip">Zip</label>
+              <input type="text" class="form-control" id="zip">
+            </div>
+          </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="email-input" placeholder="Email">
+            <input type="email" class="form-control" id="email-input">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="password-input" placeholder="Password">
+            <input type="password" class="form-control" id="password-input">
           </div>
           <div style="display: none" id="alert" class="alert alert-danger" role="alert">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             <span class="sr-only">Error:</span> <span class="msg"></span>
           </div>
-          <button type="submit" class="btn btn-default">Sign Up</button>
+          <button type="submit" class="btn btn-success btn-md btn-block">Sign Up</button>
         </form>
         <br />
-        <p>Or log in <a href="/login">here</a></p>
+        <p id="hzacct"class="text-white">Already have an account? Log in <a href="/login">here</a></p>
       </div>
     </div>
-  </div>
-
+  </div>  
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script type="text/javascript" src="js/signup.js"></script>
-
 </body>
-
 </html>

@@ -1,0 +1,43 @@
+
+body{
+    background-color: #181212;
+    font-size: smaller;
+}   
+
+#header { 
+    margin-top: 6%;
+    padding-left: 12px;
+    color: #0084ffda;
+    font-weight: bolder;
+    background-color: #181212;
+} 
+
+#logo {
+    z-index: 1;
+    margin-left: -18px;
+} 
+
+form.signup { 
+  margin-top: 40px;
+}
+ 
+label {
+    color: white;
+}  
+
+#firstname {
+    margin-bottom: 10px;
+}
+
+#state {
+    margin-bottom: 10px;
+}
+
+#password-input {
+    margin-bottom: 20px;
+}
+
+#hzacct {
+    margin-top: 15px;
+    font-size: 11px;
+}
