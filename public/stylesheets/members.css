@@ -1,0 +1,28 @@
+
+#header { 
+    margin-left: 7px;
+    color: #0084ffda;
+    font-weight: bolder;
+} 
+
+#logo {
+    margin-top: 2px;
+    height: 28px;
+    width: 28px;
+    z-index: 1;
+    margin-left: -5px;
+}  
+
+#welcome { 
+    margin-top: 4px;
+    padding-left: 4px;
+    text-align: center;
+    color: #a0d650;
+    font-weight: lighter;
+    font-size: 10px;
+}
+
+.favorite-routes {
+    margin-top: 30px;
+} 
+

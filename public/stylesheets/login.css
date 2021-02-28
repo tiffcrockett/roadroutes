@@ -1,21 +1,24 @@
-
+ 
 body{
-    background-color: #181212;
+    background-color: #212529;
     font-size: smaller;
 }   
 
 #header { 
-    margin-top: 6%;
-    padding-left: 12px;
+    padding-left: 3px;
     color: #0084ffda;
     font-weight: bolder;
-    background-color: #181212;
+    background-color: #212529;
 } 
 
 #logo {
+    margin-top: 4px;
+    height: 35px;
+    width: 35px;
     z-index: 1;
-    margin-left: -18px;
-}  
+    margin-left: -7px;
+
+} 
 
 form.login { 
     margin-top: 50px;
