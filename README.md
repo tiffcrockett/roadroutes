@@ -8,7 +8,6 @@
 * [Technologies-Used](#technologies-used)
 * [Deployed-Link](#deployed-link)
 * [Credits](#credits)
-* [License](#license)
 
 ## Description
 
@@ -42,7 +41,3 @@ https://roadroutes.herokuapp.com/
 * [Jacog K](https://github.com/)
 * [Tiffany C](https://github.com/tiffcrockett)
 
-
-## License
-
-Licensed under [MIT](https://choosealicense.com/licenses/mit/) license.
