@@ -11,34 +11,34 @@
 </head>
 	<body> 
 		<nav class="navbar navbar-expand navbar-dark bg-dark">
-		<div class="container-fluid"> 
-			<div class="navbar-header" id="header">
-				<div class="row">
-					<span class="text-center"><h6>roadroutes</h6></span>
-					<img src="images/rdrtlogo-removebg.png" alt="bicycle clipart logo" id="logo"/>
+			<div class="container-fluid"> 
+				<div class="navbar-header" id="header">
+					<div class="row">
+						<span class="text-center"><h6>roadroutes</h6></span>
+						<img src="images/rdrtlogo-removebg.png" alt="bicycle clipart logo" id="logo"/>
+					</div>
 				</div>
-			</div>
-			<ul class="navbar-nav"> 
-				<li class="nav-item">
-					<a class="nav-link" href="/all-routes"><i class="fas fa-search"></i></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/add-route"><i class="far fa-plus-square"></i></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/settings"><i class="fas fa-user-cog"></i></a>
-				</li> 
-				<li class="nav-item">
-					<a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i></a>
-				</li> 
-			</ul>  
-		</div> 
-		<p id="welcome">Welcome <span class="member-name">Name</span></p>
+				<ul class="navbar-nav"> 
+					<li class="nav-item">
+						<a class="nav-link" href="/all-routes"><i class="fas fa-search"></i></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/add-route"><i class="far fa-plus-square"></i></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/settings"><i class="fas fa-user-cog"></i></a>
+					</li> 
+					<li class="nav-item">
+						<a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i></a>
+					</li> 
+				</ul>  
+			</div> 
 		</nav> 
+		<p class="text-right" id="welcome">Welcome <span class="member-name"> </span></p> 
 		<div class="container add-route">
 			<div class="row">
 				<div class="col-md-6 offset-md-3"> 
-					<h4>Thanks for sharing a route!</h4>
+					<h5>Thanks for sharing a route!</h5>
 					<form id="add-form">
 						<div class="form-group">
 							<label for="routeName">Route Name:</label>
@@ -177,7 +177,7 @@
 							<input type="radio" name="copy" value="0">  No
 							<br />
 						</div>
-						<button type="submit" class="btn btn-success btn-md btn-block submit">Share Your Route</button>
+						<button type="submit" id="sharebtn" class="btn btn-success btn-md btn-block submit">Share Your Route</button>
 					</form>
 				</div>
 			</div>
