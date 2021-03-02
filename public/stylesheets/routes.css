@@ -50,3 +50,14 @@
 .settings {
     margin-top: 30px;
 } 
+ 
+#srchbtn {  
+    margin-top: -5px;
+    padding: 2px;
+    font-size: 12px;
+    width: 55px;
+}  
+
+#addmsg {
+    font-size: 12px;
+}
