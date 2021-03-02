@@ -1,3 +1,5 @@
+![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)
+
 # roadroutes  
 
 ## Table of Contents
@@ -20,7 +22,7 @@
 
 ## Installation
 
-No prior installation is required to properly use the application. Simply head to the Deployed Link included towards the bottom of this README.
+No prior installation is required to properly use roadroutes. Simply head to the Deployed Link included towards the bottom of this README.
 
 ## Usage
 
