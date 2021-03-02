@@ -41,3 +41,6 @@ https://roadroutes.herokuapp.com/
 * [Jacog Kriese](https://github.com/)
 * [Tiffany Crockett](https://github.com/tiffcrockett)
 
+## License 
+
+Apache License version 2.0  http://www.apache.org/licenses/
