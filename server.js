@@ -1,4 +1,5 @@
 // Requiring necessary npm packages
+const nodemailer = require("nodemailer");
 const express = require("express");
 const session = require("express-session");
 // Requiring passport as we've configured it

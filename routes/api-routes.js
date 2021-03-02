@@ -50,13 +50,13 @@ module.exports = function (app) {
       });
     }
   });
-  // GET route
-  app.get("api/posts", function (req, res) {
+  // GET route for viewing all information from the database
+  app.get("/api/posts", function (req, res) {
     db.Routes.findAll({}).then(function (dbPost) {
       res.json(dbPost);
     });
   });
-  // GET
+  // GET route to retrieve data for a specific ID in the database
   app.get("/api/posts/:id", function (req, res) {
     db.Routes.findOne({
       where: {
@@ -66,12 +66,20 @@ module.exports = function (app) {
       res.json(dbPost);
     });
   });
-  app.get("api/posts/:routeCity", function (req, res) {
-    db.Routes.findOne({
+  // GET route to retrieve data for specific state AND city
+  app.get("/api/posts/location/:city/:state", function (req, res) {
+    db.Routes.findAll({
       where: {
-        routeCity: req.params.routeCity,
+        routeCity: req.params.city,
+        routeState: req.params.state,
       },
     }).then(function (dbPost) {
+      res.json(dbPost);
+    });
+  });
+  // POST route to send inputed user data to the server
+  app.post("/api/posts", function (req, res) {
+    db.Routes.create(req.body).then(function (dbPost) {
       res.json(dbPost);
     });
   });
