@@ -46,19 +46,20 @@
               </select>  
               <select name="state">
                 <option>Search States</option>
-              </select>
+              </select> 
+              <button type="search" class="btn btn-primary" id="srchbtn">Search</button>
               <div class="form-group">
                 <label for="sort">Sort by:<br></label>
                 <input type="radio" name="sort" value="1" checked> Area
-                <input type="radio" name="sort" value="0">  Distance
+                <input type="radio" name="sort" value="0"> Distance
               </div>
             </form>
           </div>
           <div class="all-routes-container"></div>
           
-
+          <p id="addmsg">Don't see your city? Click<a href="/add-route">here</a>to add a route.</p>
         </div>
-      </div>
+      </div> 
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="js/all-routes.js" type="text/javascript"></script>

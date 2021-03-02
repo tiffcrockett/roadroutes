@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const messageH2 = document.createElement('h4');
     messageH2.style.textAlign = 'center';
     messageH2.style.marginTop = '50px';
-    messageH2.innerHTML = `No posts yet${partial}, navigate <a href='/add-route${query}'>here</a> in order to get started.`;
+    messageH2.innerHTML = `No routes to search${partial}, click <a href='/add-route${query}'>here</a> to add a route.`;
     allRoutesContainer.append(messageH2);
   };
 });
