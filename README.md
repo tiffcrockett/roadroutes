@@ -37,7 +37,7 @@ https://roadroutes.herokuapp.com/
 
 ## Credits
 
-* [Brandon D](https://github.com/)
-* [Jacog K](https://github.com/)
-* [Tiffany C](https://github.com/tiffcrockett)
+* [Brandon Dana](https://github.com/)
+* [Jacog Kriese](https://github.com/)
+* [Tiffany Crockett](https://github.com/tiffcrockett)
 
