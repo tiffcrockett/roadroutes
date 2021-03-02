@@ -48,4 +48,8 @@ module.exports = function (app) {
   app.get("/add-route", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/settings.html"));
   });
+  // Directs to the login HTML file
+  app.get("/login", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/settings.html"));
+  });
 };
