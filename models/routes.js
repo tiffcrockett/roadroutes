@@ -7,6 +7,13 @@ module.exports = function (sequelize, DataTypes) {
         len: [4],
       },
     },
+    routeName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [4],
+      },
+    },
     routeState: {
       type: DataTypes.STRING,
       allowNull: false,
