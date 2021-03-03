@@ -1,3 +1,15 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.add-route, #all-routes, #author,
+#directions, .settings {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
 .form-group, 
 .form-row,
 .label {
@@ -62,6 +74,9 @@ h5 {
     width: 55px;
 }  
 
-#addmsg {
+#addmsg { 
+    background-color: #f0f0f0;
+    text-align: center;
     font-size: 12px;
+    padding: 10px;
 }
