@@ -1,12 +1,19 @@
 module.exports = function (sequelize, DataTypes) {
   var Routes = sequelize.define("Routes", {
-    userId: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [4],
-      },
-    },
+    // pkid: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    //   validate: {
+    //     len: [4],
+    //   },
+    // },
+    // routeID: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    //   validate: {
+    //     len: [4],
+    //   },
+    // },
     routeName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -50,6 +57,13 @@ module.exports = function (sequelize, DataTypes) {
       },
       set(val) {
         this.setDataValue("routeSteps", val.join(";"));
+      },
+    },
+    createdBy: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [4],
       },
     },
   });

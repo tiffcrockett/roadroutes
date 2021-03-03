@@ -30,6 +30,17 @@ module.exports = function (app) {
       });
   });
 
+  // Route for getting saved routes with current user
+  app.get("/login", function (req, res) {
+    db.Favorites.findAll({
+      where: {
+        id: req.user.id,
+      },
+    }).then(function (dbFavorites) {
+      res.json(dbFavorites);
+    });
+  });
+
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
