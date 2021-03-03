@@ -21,7 +21,7 @@ body{
 } 
 
 form.signup { 
-  margin-top: 40px;
+  margin-top: 60px;
 }
  
 label {
@@ -38,9 +38,14 @@ label {
 
 #password-input {
     margin-bottom: 20px;
+} 
+
+.btn {
+    margin-top: 90px;
 }
 
 #hzacct {
-    margin-top: 15px;
+    margin-top: 35px;
     font-size: 11px;
+    text-align: center;
 }

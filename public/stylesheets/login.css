@@ -5,7 +5,7 @@ body{
 }   
 
 #header { 
-    padding-left: 3px;
+    margin-left: 3px;
     color: #0084ffda;
     font-weight: bolder;
     background-color: #212529;
@@ -20,16 +20,21 @@ body{
 
 } 
 
+#tagline {
+    margin-top: 75px;
+}
+
 form.login { 
-    margin-top: 50px;
+    margin-top: 45px;
 }
 
 .btn {
-    margin: 15px 0 20px 0; 
+    margin: 125px 0 20px 0; 
 }
 
-#footer {
-    margin-top: 30%;
+#message {
+    margin-top: 35px;
+    font-size: 11px;
     color: #60ce21;
     text-align: center;
 } 
