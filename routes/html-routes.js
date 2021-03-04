@@ -45,7 +45,7 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "../public/directions.html"));
   });
   // Directs to the settings HTML file
-  app.get("/add-route", (req, res) => {
+  app.get("/settings", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/settings.html"));
   });
   // Directs to the login HTML file
