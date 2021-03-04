@@ -94,4 +94,7 @@ module.exports = function (app) {
       res.json(dbPost);
     });
   });
+  app.post("api/email", function (req, res) {
+    db.Routes.update();
+  });
 };
