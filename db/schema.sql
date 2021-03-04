@@ -6,17 +6,21 @@ USE roadroutes_db;
 -- CREATING TABLE TO HOLD DATA FOR ROUTES THAT USER CREATES 
 -- (THIS WILL BE DONE IN SEQUELIZE BUT THIS IS USED A REFERENCE)
 CREATE TABLE routes (
-    id INT NOT NULL AUTO_INCREMENT,
-    userId VARCHAR(100) NOT NULL,
+    pkid INT NOT NULL AUTO_INCREMENT,
+    routeId INT NOT NULL,
+    routeName VARCHAR(50) NOT NULL,
     routeState VARCHAR(50) NOT NULL,
     routeCity VARCHAR(50) NOT NULL,
     routeArea VARCHAR(20) NOT NULL,
     routeDistance INT NOT NULL,
     routeSteps VARCHAR (1000) NOT NULL,
-    PRIMARY KEY (id), 
+    createdBy VARCHAR (50) NOT NULL,
+    PRIMARY KEY (pkid), 
 );
 
-CREATE TABLE savedRoutes (
-    id INT NOT NULL AUTO_INCREMENT,
-    saved VARCHAR(200)
+CREATE TABLE favorites (
+    pkid INT NOT NULL AUTO_INCREMENT,
+    userId INT NOT NULL,
+    routeId INT NOT NULL,
+    PRIMARY KEY (pkid), 
 )
