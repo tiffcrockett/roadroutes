@@ -21,12 +21,13 @@ module.exports = function (app) {
     db.User.create({
       email: req.body.email,
       password: req.body.password,
+      wantsEmail: false,
     })
       .then(() => {
         res.redirect(307, "/api/login");
       })
       .catch((err) => {
-        res.status(401).json(err);
+        res.status(401).json(err.message);
       });
   });
 
