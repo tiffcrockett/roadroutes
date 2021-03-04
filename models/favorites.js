@@ -7,13 +7,6 @@ module.exports = function (sequelize, DataTypes) {
         len: [4],
       },
     },
-    //     routeId: {
-    //       type: DataTypes.INTEGER,
-    //       allowNull: false,
-    //       validate: {
-    //         len: [4],
-    //       },
-    //     },
   });
 
   Favorites.associate = function (models) {

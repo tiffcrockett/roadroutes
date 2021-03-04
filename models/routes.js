@@ -1,19 +1,12 @@
 module.exports = function (sequelize, DataTypes) {
   var Routes = sequelize.define("Routes", {
-    // pkid: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    //   validate: {
-    //     len: [4],
-    //   },
-    // },
-    // routeID: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    //   validate: {
-    //     len: [4],
-    //   },
-    // },
+    routeID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        len: [4],
+      },
+    },
     routeName: {
       type: DataTypes.STRING,
       allowNull: false,

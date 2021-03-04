@@ -30,8 +30,8 @@ module.exports = function (app) {
       });
   });
 
-  // Route for getting saved routes with current user
-  app.get("/login", function (req, res) {
+  // Route for getting favorites with current user
+  app.get("/members", function (req, res) {
     db.Favorites.findAll({
       where: {
         id: req.user.id,
