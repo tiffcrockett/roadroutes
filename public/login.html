@@ -10,20 +10,15 @@
   <link rel="stylesheet" href="stylesheets/login.css">
 </head>
   <body>
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header" id="header">
-            <div class="row">
-              <h5>roadroutes</h5>
-              <img src="images/rdrtlogo-removebg.png" alt="bicycle clipart logo" id="logo"/>
-            </div>
-        </div> 
-      </div>
-    </nav>
-    <div class="container-fluid">
+    <div class="container login"> 
       <div class="row">
-        <div class="col-md-5 col-md-offset-3">
-          <form class="login">
+        <div class="col-md-4 offset-md-4"> 
+          <div class="row">
+            <h5 id="header">roadroutes</h5>
+            <img src="images/rdrtlogo-removebg.png" alt="bicycle clipart logo" id="logo"/>
+          </div>
+          <h5 id="tagline" class="text-white text-center"><em>Great rides await!</em></h5>
+          <form class="login"> 
             <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
               <input type="email" class="form-control" id="email-input" placeholder="Email">
@@ -34,8 +29,8 @@
             </div>
             <button type="submit" class="btn btn-success btn-md btn-block">Login</button>
           </form>
-          <br /><br /> 
-          <p id="footer"><a href="/">Create account</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/settings"> App Settings</a></p>
+          <br /> 
+          <p id="message"><a href="/">Create account</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#"> App Demo</a></p>
         </div>
       </div>
     </div>

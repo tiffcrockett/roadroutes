@@ -73,7 +73,7 @@
         !routeCitySelect.value ||
         !routeStateSelect.value ||
         !routeAuthor.value.trim() || 
-      ) {
+       ) {
         return;
       }
   
