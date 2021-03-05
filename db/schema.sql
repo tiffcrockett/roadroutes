@@ -8,13 +8,13 @@ USE roadroutes_db;
 CREATE TABLE routes (
     pkid INT NOT NULL AUTO_INCREMENT,
     routeId INT NOT NULL,
-    routeName VARCHAR(50) NOT NULL,
-    routeState VARCHAR(50) NOT NULL,
-    routeCity VARCHAR(50) NOT NULL,
-    routeArea VARCHAR(20) NOT NULL,
+    routeName VARCHAR(255) NOT NULL,
+    routeState VARCHAR(255) NOT NULL,
+    routeCity VARCHAR(255) NOT NULL,
+    routeArea VARCHAR(255) NOT NULL,
     routeDistance INT NOT NULL,
     routeSteps VARCHAR (1000) NOT NULL,
-    createdBy VARCHAR (50) NOT NULL,
+    createdBy VARCHAR (255) NOT NULL,
     PRIMARY KEY (pkid), 
 );
 
@@ -24,3 +24,17 @@ CREATE TABLE favorites (
     routeId INT NOT NULL,
     PRIMARY KEY (pkid), 
 )
+
+CREATE TABLE users {
+    pkid INT NOT NULL AUTO_INCREMENT,
+    userId INT NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    firstName VARCHAR(255) NOT NULL,
+    lastName VARCHAR(255) NOT NULL,
+    city VARCHAR(255) NOT NULL,
+    state VARCHAR(255) NOT NULL,
+    zip INT NOT NULL,
+    PRIMARY KEY (pkid)  
+}
+
