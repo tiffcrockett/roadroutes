@@ -31,7 +31,15 @@ No prior installation is required to properly use roadroutes. Simply head to the
 
 ## Technologies-Used
 
-* 
+* bcryptjs
+* express
+* express-session
+* mysql
+* mysql2
+* nodemailer
+* passport
+* passport-local
+* sequelize
 
 ## Deployed-Link
 
