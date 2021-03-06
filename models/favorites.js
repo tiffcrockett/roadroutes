@@ -1,13 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  var Favorites = sequelize.define("Favorites", {
-    // userId: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    //   validate: {
-    //     len: [4],
-    //   },
-    // },
-  });
+  var Favorites = sequelize.define("Favorites", {});
 
   Favorites.associate = function (models) {
     Favorites.belongsTo(models.Routes, {
