@@ -24,6 +24,8 @@ CREATE TABLE favorites (
     pkid INT NOT NULL AUTO_INCREMENT,
     userId INT NOT NULL,
     routeId INT NOT NULL,
+    createdAt VARCHAR(255) NOT NULL,
+    updatedAt VARCHAR(255) NOT NULL,    
     PRIMARY KEY (pkid)
 );
 

@@ -1,9 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
   var Routes = sequelize.define("Routes", {
-    routeId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
+    
     routeName: {
       type: DataTypes.STRING,
       allowNull: false,
