@@ -35,7 +35,7 @@ $(document).ready(function () {
     }
     var newRoute = {
       routeName: routeTitleInput.val().trim(),
-      routeSteps: routeDirectionsInput.val().trim(),
+      routeSteps: JSON.stringify(routeDirectionsInput.val().trim()),
       routeArea: routeAreaInput.val(),
       routeDistance: routeDistanceInput.val(),
       routeCity: routeCityInput.val(),
@@ -47,7 +47,7 @@ $(document).ready(function () {
   });
   //Function to post to DB
   function submitPost(Post) {
-    $.post("/api/posts", Post, function () {
+    $.post("/api/posts/newRoute", Post, function () {
       window.location.href = "/members";
     });
   }

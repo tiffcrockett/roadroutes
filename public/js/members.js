@@ -1,25 +1,19 @@
 // const { json } = require("sequelize/types");
-
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM loaded! 🚀");
-
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
   $.get("/api/user_data").then(function (data) {
     $(".member-name").text(data.email);
   });
-
   const favoritesContainer = document.querySelector(".favorites-container");
-
   // Variable to hold our posts
   let posts;
-
   const getPosts = (author) => {
     authorId = author || "";
     if (authorId) {
       authorId = `/?author_id=${authorId}`;
     }
-
     fetch(`/api/posts${authorId}`, {
       method: "GET",
       headers: {
@@ -34,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch((error) => console.error("Error:", error));
   };
-
   // Get a route post from a specific author
   const url = window.location.search;
   let authorId;
@@ -51,14 +44,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (id) {
       partial = ` for User #${id}`;
     }
-
-
-      // Container.innerHTML = '';
-      // const messageH2 = document.createElement('h4');
-      // messageH2.style.textAlign = 'center';
-      // messageH2.style.marginTop = '50px';
-      // messageH2.innerHTML = `No saved routes yet${partial}, click <a href='/all-routes${query}'>here</a> to search routes.`;
-      // allRoutesContainer.append(messageH2);
-
+    Container.innerHTML = "";
+    const messageH2 = document.createElement("h4");
+    messageH2.style.textAlign = "center";
+    messageH2.style.marginTop = "50px";
+    messageH2.innerHTML = `No saved routes yet${partial}, click <a href='/all-routes${query}'>here</a> to search routes.`;
+    allRoutesContainer.append(messageH2);
   };
 });
+
+// Show saved routes that the user has elected to save
+// Rendering routes would be the same from all-routes just with a different get request

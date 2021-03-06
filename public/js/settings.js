@@ -37,3 +37,5 @@ document.getElementById("emailYes").addEventListener("click", function () {
 //     });
 //   });
 // }
+
+// Finish update query for settings
