@@ -26,6 +26,7 @@ module.exports = function (app) {
   app.get("/members", isAuthenticated, (req, res) => {
     res.sendFile(path.join(__dirname, "../public/members.html"));
   });
+
   // ***************** ROUTES FOR HTML PAGES *****************
 
   // Directs to add-route HTML file

@@ -1,46 +1,28 @@
 module.exports = function (sequelize, DataTypes) {
   var Routes = sequelize.define("Routes", {
-    routeID: {
+    routeId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      validate: {
-        len: [4],
-      },
     },
     routeName: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [4],
-      },
     },
     routeState: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [4],
-      },
     },
     routeCity: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [4],
-      },
     },
     routeArea: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [4],
-      },
     },
     routeDistance: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      validate: {
-        len: [4],
-      },
     },
     routeSteps: {
       type: DataTypes.STRING,
@@ -55,9 +37,6 @@ module.exports = function (sequelize, DataTypes) {
     createdBy: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [4],
-      },
     },
   });
   return Routes;
