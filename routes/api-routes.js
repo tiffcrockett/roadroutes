@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+const nodemailer = require("nodemailer");
 
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -40,13 +41,29 @@ module.exports = function (app) {
   // app.get("/members", function (req, res) {
   //   db.Favorites.findAll({
   //     where: {
-  //       id: req.user.id,
+  //       userId: req.user.id,
   //     },
-  //   }).then(function (dbFavorites) {
-  //     res.json(dbFavorites);
+  //   }).then(function (results) {
+  //     res.json(results);
   //   });
   // });
 
+  // Route for adding a route to favorites table
+  app.post("/members/posts", function (req, res) {
+    db.Favorites.create({
+      routeId: req.body.routeId,
+      userId: req.body.user.id,
+      createdBy: req.user.id,
+    })
+      .then(function (results) {
+        res.json(results);
+      })
+      .catch(function (err) {
+        res.json(err);
+      });
+  });
+
+  // Route to retrieve all favorites on login
   app.get("/members", async function (req, res) {
     await db.sequelize
       .query(
@@ -116,22 +133,17 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/api/email", function (req, res) {
-    db.User.findAll({
-      attributes: ["email"],
-    }).then(function (email) {
-      res.json(email);
-    });
-  });
-
-
   // POST route to send inputed user data to the server
   app.post("/api/posts", function (req, res) {
-    db.Routes.create(req.body).then(function (dbPost) {
+    db.Routes.create({
+      routeName: req.body.routeName,
+      routeState: req.body.routeState,
+      routeCity: req.body.routeCity,
+      routeArea: req.body.routeArea,
+      routeDistance: req.body.routeDistance,
+      routeSteps: req.body.routeState,
+    }).then(function (dbPost) {
       res.json(dbPost);
     });
-  });
-  app.post("api/email", function (req, res) {
-    db.Routes.update();
   });
 };
