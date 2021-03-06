@@ -1,5 +1,3 @@
-$(document).ready(function () {
-  $.get("/api/posts").then(function (data) {
-    $("#test").text(data);
-  });
+$.get("/api/posts").then(function (data) {
+  $("#hi").text(data);
 });
