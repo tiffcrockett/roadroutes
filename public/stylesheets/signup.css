@@ -9,7 +9,7 @@ body{
 }
 
 form.signup { 
-    margin-top: 25%;
+    margin-top: 21%;
 }
 
 #header { 
@@ -56,7 +56,7 @@ label {
 
 @media screen and (max-width: 365px) {
     form.signup { 
-        margin-top: 15%;
+        margin-top: 12%;
     } 
 }  
 
