@@ -116,6 +116,15 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/api/email", function (req, res) {
+    db.User.findAll({
+      attributes: ["email"],
+    }).then(function (email) {
+      res.json(email);
+    });
+  });
+
+
   // POST route to send inputed user data to the server
   app.post("/api/posts", function (req, res) {
     db.Routes.create(req.body).then(function (dbPost) {
