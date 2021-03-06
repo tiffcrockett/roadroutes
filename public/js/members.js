@@ -52,11 +52,13 @@ document.addEventListener("DOMContentLoaded", () => {
       partial = ` for User #${id}`;
     }
 
-    Container.innerHTML = "";
-    const messageH2 = document.createElement("h4");
-    messageH2.style.textAlign = "center";
-    messageH2.style.marginTop = "50px";
-    messageH2.innerHTML = `No saved routes yet${partial}, click <a href='/all-routes${query}'>here</a> to search routes.`;
-    allRoutesContainer.append(messageH2);
+
+      // Container.innerHTML = '';
+      // const messageH2 = document.createElement('h4');
+      // messageH2.style.textAlign = 'center';
+      // messageH2.style.marginTop = '50px';
+      // messageH2.innerHTML = `No saved routes yet${partial}, click <a href='/all-routes${query}'>here</a> to search routes.`;
+      // allRoutesContainer.append(messageH2);
+
   };
 });

@@ -1,9 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
   var Routes = sequelize.define("Routes", {
-    routeId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
+    
     routeName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -25,14 +22,8 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
     },
     routeSteps: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(2000),
       allowNull: false,
-      get() {
-        return this.getDataValue("routeSteps").split(";");
-      },
-      set(val) {
-        this.setDataValue("routeSteps", val.join(";"));
-      },
     },
     createdBy: {
       type: DataTypes.STRING,
