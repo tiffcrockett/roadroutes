@@ -135,7 +135,14 @@ module.exports = function (app) {
 
   // POST route to send inputed user data to the server
   app.post("/api/posts", function (req, res) {
-    db.Routes.create(req.body).then(function (dbPost) {
+    db.Routes.create({
+      routeName: req.body.routeName,
+      routeState: req.body.routeState,
+      routeCity: req.body.routeCity,
+      routeArea: req.body.routeArea,
+      routeDistance: req.body.routeDistance,
+      routeSteps: req.body.routeState,
+    }).then(function (dbPost) {
       res.json(dbPost);
     });
   });
