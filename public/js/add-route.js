@@ -132,3 +132,15 @@
     };
   });
   
+  // Ajax call to send out email using nodemailer on-click of posting a new route
+  $.ajax({
+    url: 'your-heroku.com',
+    type: 'POST',
+    headers: {'Accept': 'application/json;'},
+    data: {
+    "subject": "subject",
+    "message": "some body text"
+    },
+    }).done(function (res) {
+      console.log(res); // it shows your email sent message.
+    });
