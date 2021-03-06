@@ -39,7 +39,8 @@ No prior installation is required to properly use roadroutes. Simply head to the
 7. Navigate back. Click the SAVE button to add the route to Your Saved Routes.
 8. To share a favorite route, click [+] (add) icon to navigate to the Add-Route page. This will add your route to the All-Routes list.
 9. Enter route information on the Add-Route page and SAVE.  You will have the option to save the route to Your Saved Routes.
-10. Click on the Added By profile name included on each route summary to view all routes added by the person . 
+10. Click on the Added By profile name included on each route summary to view all routes added by the person.
+11. Click on the User-cog icon to navigate to the Settings page and opt to receive an email notification when new routes are posted in your city.
 
 
 ## Technologies-Used
@@ -60,7 +61,7 @@ https://roadroutes.herokuapp.com/
 
 ## Credits
 
-* [Brandon Dana](https://github.com/)
+* [Brandon Dana](https://github.com/Brando2147/)
 * [Jacog Kriese](https://github.com/jkriese12/)
 * [Tiffany Crockett](https://github.com/tiffcrockett)
 
