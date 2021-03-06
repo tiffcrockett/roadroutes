@@ -21,6 +21,11 @@ module.exports = function (app) {
     db.User.create({
       email: req.body.email,
       password: req.body.password,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      city: req.body.city,
+      state: req.body.state,
+      zip: req.body.zip,
       wantsEmail: false,
     })
       .then(() => {
@@ -32,14 +37,32 @@ module.exports = function (app) {
   });
 
   // Route for getting favorites with current user
-  app.get("/members", function (req, res) {
-    db.Favorites.findAll({
-      where: {
-        id: req.user.id,
-      },
-    }).then(function (dbFavorites) {
-      res.json(dbFavorites);
-    });
+  // app.get("/members", function (req, res) {
+  //   db.Favorites.findAll({
+  //     where: {
+  //       id: req.user.id,
+  //     },
+  //   }).then(function (dbFavorites) {
+  //     res.json(dbFavorites);
+  //   });
+  // });
+
+  app.get("/members", async function (req, res) {
+    await db.sequelize
+      .query(
+        `SELECT * FROM routes 
+    INNER JOIN favorites
+    ON route.id = favorites.routeId
+    INNER JOIN user 
+    where user.id = ${req.user.id}`,
+        { type: QueryTypes.SELECT }
+      )
+      .then((results) => {
+        res.json(results);
+      })
+      .catch((err) => {
+        res.status(401).json(err.message);
+      });
   });
 
   // Route for logging user out
@@ -62,12 +85,14 @@ module.exports = function (app) {
       });
     }
   });
+
   // GET route for viewing all information from the database
   app.get("/api/posts", function (req, res) {
     db.Routes.findAll({}).then(function (dbPost) {
       res.json(dbPost);
     });
   });
+
   // GET route to retrieve data for a specific ID in the database
   app.get("/api/posts/:id", function (req, res) {
     db.Routes.findOne({
@@ -78,6 +103,7 @@ module.exports = function (app) {
       res.json(dbPost);
     });
   });
+
   // GET route to retrieve data for specific state AND city
   app.get("/api/posts/location/:city/:state", function (req, res) {
     db.Routes.findAll({
@@ -89,6 +115,7 @@ module.exports = function (app) {
       res.json(dbPost);
     });
   });
+
   // POST route to send inputed user data to the server
   app.post("/api/posts", function (req, res) {
     db.Routes.create(req.body).then(function (dbPost) {
