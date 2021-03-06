@@ -15,19 +15,20 @@ CREATE TABLE routes (
     routeDistance INT NOT NULL,
     routeSteps VARCHAR (1000) NOT NULL,
     createdBy VARCHAR (255) NOT NULL,
-    PRIMARY KEY (pkid), 
+    createdAt VARCHAR(255) NOT NULL,
+    updatedAt VARCHAR(255) NOT NULL,
+    PRIMARY KEY (pkid)
 );
 
 CREATE TABLE favorites (
     pkid INT NOT NULL AUTO_INCREMENT,
     userId INT NOT NULL,
     routeId INT NOT NULL,
-    PRIMARY KEY (pkid), 
-)
+    PRIMARY KEY (pkid)
+);
 
-CREATE TABLE users {
+CREATE TABLE users (
     pkid INT NOT NULL AUTO_INCREMENT,
-    userId INT NOT NULL,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     firstName VARCHAR(255) NOT NULL,
@@ -35,6 +36,8 @@ CREATE TABLE users {
     city VARCHAR(255) NOT NULL,
     state VARCHAR(255) NOT NULL,
     zip INT NOT NULL,
+    createdAt VARCHAR(255) NOT NULL,
+    updatedAt VARCHAR(255) NOT NULL,
     PRIMARY KEY (pkid)  
-}
+);
 
