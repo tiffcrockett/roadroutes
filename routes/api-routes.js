@@ -41,13 +41,29 @@ module.exports = function (app) {
   // app.get("/members", function (req, res) {
   //   db.Favorites.findAll({
   //     where: {
-  //       id: req.user.id,
+  //       userId: req.user.id,
   //     },
-  //   }).then(function (dbFavorites) {
-  //     res.json(dbFavorites);
+  //   }).then(function (results) {
+  //     res.json(results);
   //   });
   // });
 
+  // Route for adding a route to favorites table
+  app.post("/members/posts", function (req, res) {
+    db.Favorites.create({
+      routeId: req.body.routeId,
+      userId: req.body.user.id,
+      createdBy: req.user.id,
+    })
+      .then(function (results) {
+        res.json(results);
+      })
+      .catch(function (err) {
+        res.json(err);
+      });
+  });
+
+  // Route to retrieve all favorites on login
   app.get("/members", async function (req, res) {
     await db.sequelize
       .query(
