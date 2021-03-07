@@ -59,7 +59,7 @@
         <div class="col-md-12 offset-md-3">
           <h5>Search Routes:</h5>
           <div class="form-row">
-            <form id="savedCityState" class="form-group">
+            <div id="savedCityState" class="form-group">
               <select id="dbCity" name="city">
                 <option>Search Cities</option>
               </select>
@@ -69,10 +69,10 @@
               <button type="search" class="btn btn-primary" id="srchbtn">Search</button>
               <div class="form-group">
                 <label for="sort">Sort distance by:<br /></label>
-                <input type="radio" name="sort" value="1" checked /> Ascending
-                <input type="radio" name="sort" value="0" /> Descending
+                <input id="asc" type="radio" name="sort" value="1" checked /> Ascending
+                <input id="desc" type="radio" name="sort" value="0" /> Descending
               </div>
-            </form>
+            </div>
           </div>
           <div class="all-routes-container"></div>
         </div>

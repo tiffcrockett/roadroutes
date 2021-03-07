@@ -69,10 +69,10 @@ module.exports = function (app) {
   });
 
   // GET route to retrieve data for a specific ID in the database
-  app.get("/api/posts/:id", function (req, res) {
-    db.Routes.findOne({
+  app.get("/api/posts/:state", function (req, res) {
+    db.Routes.findAll({
       where: {
-        id: req.params.id,
+        routeState: req.params.state,
       },
     }).then(function (dbPost) {
       res.json(dbPost);
@@ -86,7 +86,7 @@ module.exports = function (app) {
         routeCity: req.params.city,
         routeState: req.params.state,
       },
-      order: [["routeDistance", "ascending"]],
+      order: [["routeDistance", "ASC"]],
     }).then(function (dbPost) {
       res.json(dbPost);
     });
@@ -98,7 +98,7 @@ module.exports = function (app) {
         routeCity: req.params.city,
         routeState: req.params.state,
       },
-      order: [["routeDistance", "descending"]],
+      order: [["routeDistance", "DESC"]],
     }).then(function (dbPost) {
       res.json(dbPost);
     });

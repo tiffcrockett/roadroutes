@@ -7,18 +7,38 @@ $(document).ready(function () {
   var posts;
   var cities;
   var states;
-  // Calling all posts to display on the screen
-
+  var searchCity;
+  var searchState;
+  //Ascending or Descending data storage
+  var asc = $("#asc");
+  var desc = $("desc");
+  // Calling all posts to display on the screen on click
+  var search = $("#srchbtn");
+  $(search).on("click", function () {
+    console.log(stateDropDown.val());
+    console.log(cityDropDown);
+    searchCity = cityDropDown.val();
+    searchState = stateDropDown.val();
+    getPosts(searchCity, searchState);
+  });
   // Calling functions to display all cities and states in the DB and adding to the option drowdown
   getCities();
   getStates();
   // Function using GET route to grab all the information from the Routes table on the DB
-  function getPosts() {
-    $.get("/api/posts", function (data) {
-      console.log(data);
-      posts = data;
-      displayRows();
-    });
+  function getPosts(city, state) {
+    if ($(asc).checked) {
+      $.get("/api/posts/locationAscending/" + city + "/" + state, function (data) {
+        console.log(data);
+        posts = data;
+        displayRows();
+      });
+    } else {
+      $.get("/api/posts/locationDescending/" + city + "/" + state, function (data) {
+        console.log(data);
+        posts = data;
+        displayRows();
+      });
+    }
   }
   // Function using get route to grab all cities that have been added to the DB
   function getCities() {
@@ -67,15 +87,21 @@ $(document).ready(function () {
   }
   // Function to dynamically generate the cities in the DB for the dropdown
   function createCities(cities) {
-    var option = $("<option>");
-    option.text(cities.routeCity);
-    cityDropDown.append(option);
+    if (cityDropDown.find("option#" + cities.routeCity).length === 0) {
+      var option = $("<option>");
+      option.attr("id", cities.routeCity);
+      option.text(cities.routeCity);
+      cityDropDown.append(option);
+    }
   }
   // Function to dynamically generate the states in the DB for the dropdown
   function createStates(states) {
-    var option = $("<option>");
-    option.text(states.routeState);
-    stateDropDown.append(option);
+    if (stateDropDown.find("option#" + states.routeState).length === 0) {
+      var option = $("<option>");
+      option.attr("id", states.routeState);
+      option.text(states.routeState);
+      stateDropDown.append(option);
+    }
   }
   // Function to dynamically generate the rows creating HTML elements
   function createRows(post) {
