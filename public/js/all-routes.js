@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const postsToAdd = [];
 
     posts.forEach((post) => postsToAdd.push(createNewRow(post)));
-    postsToAdd.forEach((post) => blogContainer.append(post));
+    postsToAdd.forEach((post) => allRoutesContainer.append(post));
   };
 
   const createNewRow = (post) => {
@@ -56,16 +56,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const newPostCard = document.createElement('div');
     newPostCard.classList.add('card');
-    newPostCard.classList({
+    newPostCard.css({
       'background-color': '#f8f9f9',
       'margin-bottom': '20px',
     });
 
     // Save button
     const saveButton = document.createElement('button');
-    editButton.textContent = 'SAVE';
-    editButton.classList.add('save', 'btn', 'btn-success');
-    editButton.addEventListener('click', handlePostSave);
+    saveButton.textContent = 'SAVE';
+    saveButton.classList.add('save', 'btn', 'btn-success');
+    saveButton.addEventListener('click', handlePostSave);
 
     const newPostTitle = document.createElement('h3');
     const newPostArea = document.createElement('small');
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
     newPostAuthor.style.color = 'blue';
     newPostAuthor.style.marginTop = '-10px'; 
 
-    newPostTitle.textContent = `${post.title}`;
+    newPostTitle.textContent = `${post.routeName}`;
     newPostArea.textContent = `${post.routeArea.selected}`;
     newPostDistance.textContent = `${post.routeDistance.selected} mi`;
     newPostCity.textContent = `${post.routeCity.selected}`;
@@ -112,5 +112,16 @@ document.addEventListener('DOMContentLoaded', () => {
     messageH2.style.marginTop = '50px';
     messageH2.innerHTML = `No routes to search${partial}, click <a href='/add-route${query}'>here</a> to add a route.`;
     allRoutesContainer.append(messageH2);
+  }; 
+
+  // Click event on route title and function to view directions
+  $('h3').on('click', viewDirections());
+
+  function viewDirections() {
+    var currentPost = $(this)
+      .parent()
+      .data('post');
+      window.location.href = '/directions' + currentPost.id;
   };
+
 });
