@@ -1,5 +1,5 @@
 $(document).ready(function () { 
-  var memberName = $.get("/api/user_data").then(function (data) { 
+  $.get("/api/user_data").then(function (data) { 
   $(".member-name").text(data.email.split('@')[0]);
   }); 
   
