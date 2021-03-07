@@ -66,7 +66,7 @@ https://roadroutes.herokuapp.com/
 ## Credits
 
 * [Brandon Dana](https://github.com/Brando2147/)
-* [Jacog Kriese](https://github.com/jkriese12/)
+* [Jacob Kriese](https://github.com/jkriese12/)
 * [Tiffany Crockett](https://github.com/tiffcrockett)
 
 ## License 
