@@ -43,13 +43,13 @@ $(document).ready(function () {
     };
 
     console.log(newRoute);
-    sendEmail();
+    // sendEmail();
     submitPost(newRoute);
   });
   // Function to post to DB
   function submitPost(Post) {
     $.post("/api/posts/newRoute", Post, function () {
-      window.location.href = "/members";
+      window.location.href = "/all-routes";
     });
   }
   // Function to send email with nodemailer

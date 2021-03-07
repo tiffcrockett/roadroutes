@@ -18,24 +18,6 @@ module.exports = function (app) {
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
-  app.post("/api/signup", (req, res) => {
-    db.User.create({
-      email: req.body.email,
-      password: req.body.password,
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      city: req.body.city,
-      state: req.body.state,
-      zip: req.body.zip,
-      wantsEmail: false,
-    })
-      .then(() => {
-        res.redirect(307, "/api/login");
-      })
-      .catch((err) => {
-        res.status(401).json(err.message);
-      });
-  });
 
   //****************** GET ROUTES ****************** /
 
@@ -147,7 +129,7 @@ module.exports = function (app) {
       routeCity: req.body.routeCity,
       routeArea: req.body.routeArea,
       routeDistance: req.body.routeDistance,
-      routeSteps: req.body.routeState,
+      routeSteps: req.body.routeSteps,
     }).then(function (dbPost) {
       res.json(dbPost);
     });
@@ -165,5 +147,31 @@ module.exports = function (app) {
       .catch(function (err) {
         res.json(err);
       });
+  });
+  app.post("/api/signup", (req, res) => {
+    db.User.create({
+      email: req.body.email,
+      password: req.body.password,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      city: req.body.city,
+      state: req.body.state,
+      zip: req.body.zip,
+      wantsEmail: false,
+    })
+      .then(() => {
+        res.redirect(307, "/api/login");
+      })
+      .catch((err) => {
+        res.status(401).json(err.message);
+      });
+  });
+  //****************** PUT ROUTES ****************** /
+  app.put("/api/signuph", function (req, res) {
+    db.User.update({
+      wantsEmail: true,
+    }).then(function (data) {
+      res.json(data);
+    });
   });
 };

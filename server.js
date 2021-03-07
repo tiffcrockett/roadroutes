@@ -51,6 +51,9 @@ function sendEmail(mail) {
 app.post("/api/post/email", function (req, res) {
   db.User.findAll({
     attributes: ["email"],
+    where: {
+      wantsEmail: true,
+    },
   }).then(function (data) {
     var emailList = [];
     for (var i = 0; i < data.length; i++) {
