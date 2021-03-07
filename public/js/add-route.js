@@ -43,12 +43,27 @@ $(document).ready(function () {
     };
 
     console.log(newRoute);
+    // sendEmail();
     submitPost(newRoute);
   });
-  //Function to post to DB
+  // Function to post to DB
   function submitPost(Post) {
     $.post("/api/posts/newRoute", Post, function () {
-      window.location.href = "/members";
+      window.location.href = "/all-routes";
+    });
+  }
+  // Function to send email with nodemailer
+  function sendEmail() {
+    $.ajax({
+      url: "/api/post/email",
+      method: "POST",
+      contentType: "application/json",
+      success: function (response) {
+        console.log(response);
+      },
+      fail: function (error) {
+        console.log(error);
+      },
     });
   }
 });

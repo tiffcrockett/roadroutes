@@ -12,13 +12,13 @@ function findAllEmail() {
     var transporter = nodemailer.createTransport({
       service: "hotmail",
       auth: {
-        user: "Road_Routes@outlook.com",
+        user: "roadroutes_bootcamp@outlook.com",
         pass: "fullstack123",
       },
     });
 
     var mailOptions = {
-      from: "Road_Routes@outlook.com",
+      from: "roadroutes_bootcamp@outlook.com",
       bcc: array,
       subject: "Sending Email using Node.js",
       text: "That was easy!",
