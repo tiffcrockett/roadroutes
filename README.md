@@ -33,21 +33,19 @@ No prior installation is required to properly use roadroutes. Simply head to the
 
 ## Usage
 
-1. Create an account with ROADROUTES
-2. Loging in to user account navigates to the Members page.
-3. The Members page lists Your Saved Routes. To add routes to Your Saved Routes, click the SEARCH icon to search the routes database.
-4. The All-Routes page lists of all routes or search the database to show route by City, State and SORT by route distance ascending or descending.  
-5. Each route is shown in a summary format that includes route name, distance, area of town, city, state and added by profile name.
+1. Create an account with ROADROUTES and navigate the application using the navbar icons. 
+ ![Navbar icons]()
+2. Loging into user account navigates to the Members page, which lists Your Saved Routes. This page is located with the HOME icon.
+3. To add routes to Your Saved Routes, click the SEARCH icon to navigate to the All-Routes page.
+4. The All-Routes page lists all routes in the database and can be viewed by City and State. You can further SORT by route distance ascending or descending.  
+5. Each route is shown in a summary format that includes route name, distance, area of town, city, state, and profile name of route author.
 6. To view the route details and directions, click the Route Name shown on the summary. 
 7. Navigate BACK. Click SAVE button to add the route to Your Saved Routes.
-8. To share a favorite route by adding it to the All-Routes list, click [+] (add) icon to navigate to the Add-Route page.
+8. To share a favorite route by adding it to the All-Routes list, click [+] ADD icon to navigate to the Add-Route page.
 9. Enter route information on the Add-Route page and SAVE. 
-10. Click on the Added By profile name included on each route summary to view all routes added by that person.
-11. Click on the User-cog icon to navigate to the Settings page and opt to receive an email notification when new routes are posted in your city.
-12. Click on the HOME icon to navigate to Your Saved Routes. 
-13. Click the {=> logout icon to exit the app.
-![Navbar icons]()
-
+10. To view all routes added by a specific person, click on the Added By profile name on the route summary. 
+11. Click on the User-cog icon to navigate to the Settings page. There opt to receive an email notification when new routes are posted in your city.
+12. Click the {=> logout icon to exit the ROADROUTES app.
 
 ## Technologies-Used
 
