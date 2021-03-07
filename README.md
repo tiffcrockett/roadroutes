@@ -9,7 +9,8 @@
 * [Usage](#usage)
 * [Technologies-Used](#technologies-used)
 * [Deployed-Link](#deployed-link)
-* [Credits](#credits)
+* [Credits and Contact](#credits-and-Contact) 
+
 
 ## Description 
 
@@ -63,12 +64,8 @@ No prior installation is required to properly use roadroutes. Simply head to the
 
 https://roadroutes.herokuapp.com/
 
-## Credits
+## Credits-and-Contact
 
-* [Brandon Dana](https://github.com/Brando2147/)
-* [Jacob Kriese](https://github.com/jkriese12/)
-* [Tiffany Crockett](https://github.com/tiffcrockett)
-
-## License 
-
-Apache License version 2.0  http://www.apache.org/licenses/
+* [Brandon Dana](https://github.com/Brando2147/) - brando2147@gmail.com
+* [Jacob Kriese](https://github.com/jkriese12/) - jkriese12@gmail.com
+* [Tiffany Crockett](https://github.com/tiffcrockett) - crockett.tiff@gmail.com
