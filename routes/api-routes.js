@@ -139,7 +139,6 @@ module.exports = function (app) {
     db.Favorites.create({
       routeId: req.body.routeId,
       userId: req.body.user.id,
-      createdBy: req.user.id,
     })
       .then(function (results) {
         res.json(results);
