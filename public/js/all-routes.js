@@ -56,6 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const newPostCard = document.createElement('div');
     newPostCard.classList.add('card');
+    newPostCard.classList({
+      'background-color': '#f8f9f9',
+      'margin-bottom': '20px',
+    });
 
     // Save button
     const saveButton = document.createElement('button');
