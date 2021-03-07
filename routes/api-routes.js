@@ -18,39 +18,8 @@ module.exports = function (app) {
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
-  app.post("/api/signup", (req, res) => {
-    db.User.create({
-      email: req.body.email,
-      password: req.body.password,
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      city: req.body.city,
-      state: req.body.state,
-      zip: req.body.zip,
-      wantsEmail: false,
-    })
-      .then(() => {
-        res.redirect(307, "/api/login");
-      })
-      .catch((err) => {
-        res.status(401).json(err.message);
-      });
-  });
 
-  // Route for adding a route to favorites table
-  app.post("/members/posts", function (req, res) {
-    db.Favorites.create({
-      routeId: req.body.routeId,
-      userId: req.body.user.id,
-      createdBy: req.user.id,
-    })
-      .then(function (results) {
-        res.json(results);
-      })
-      .catch(function (err) {
-        res.json(err);
-      });
-  });
+  //****************** GET ROUTES ****************** /
 
   // Route to retrieve all favorites on login
   app.get("/members", async function (req, res) {
@@ -100,55 +69,41 @@ module.exports = function (app) {
   });
 
   // GET route to retrieve data for a specific ID in the database
-  app.get("/api/posts/:id", function (req, res) {
-    db.Routes.findOne({
+  app.get("/api/posts/:state", function (req, res) {
+    db.Routes.findAll({
       where: {
-        id: req.params.id,
+        routeState: req.params.state,
       },
     }).then(function (dbPost) {
       res.json(dbPost);
     });
   });
 
-  // GET route to retrieve data for specific state AND city
+  // GET route to retrieve data for specific state AND city sorted by ascending distance
   app.get("/api/posts/locationAscending/:city/:state", function (req, res) {
     db.Routes.findAll({
       where: {
         routeCity: req.params.city,
         routeState: req.params.state,
       },
-      order: [["routeDistance", "ascending"]],
+      order: [["routeDistance", "ASC"]],
     }).then(function (dbPost) {
       res.json(dbPost);
     });
   });
-
+  // GET route to retrieve data for specific state AND city sorted by descending distance
   app.get("/api/posts/locationDescending/:city/:state", function (req, res) {
     db.Routes.findAll({
       where: {
         routeCity: req.params.city,
         routeState: req.params.state,
       },
-      order: [["routeDistance", "descending"]],
+      order: [["routeDistance", "DESC"]],
     }).then(function (dbPost) {
       res.json(dbPost);
     });
   });
-
-  // POST route to send inputed user data to the server
-  app.post("/api/posts", function (req, res) {
-    db.Routes.create({
-      routeName: req.body.routeName,
-      routeState: req.body.routeState,
-      routeCity: req.body.routeCity,
-      routeArea: req.body.routeArea,
-      routeDistance: req.body.routeDistance,
-      routeSteps: req.body.routeState,
-    }).then(function (dbPost) {
-      res.json(dbPost);
-    });
-  });
-
+  // GET route to find all cities that have been added to the database
   app.get("/api/city", function (req, res) {
     db.Routes.findAll({
       attributes: ["routeCity"],
@@ -156,12 +111,67 @@ module.exports = function (app) {
       res.json(dbPost);
     });
   });
-
+  // GET route to find all states that have been added to the database
   app.get("/api/state", function (req, res) {
     db.Routes.findAll({
       attributes: ["routeState"],
     }).then(function (dbPost) {
       res.json(dbPost);
+    });
+  });
+  //****************** POST ROUTES ****************** /
+
+  // POST route to send inputed user data to the server
+  app.post("/api/posts/newRoute", function (req, res) {
+    db.Routes.create({
+      routeName: req.body.routeName,
+      routeState: req.body.routeState,
+      routeCity: req.body.routeCity,
+      routeArea: req.body.routeArea,
+      routeDistance: req.body.routeDistance,
+      routeSteps: req.body.routeSteps,
+    }).then(function (dbPost) {
+      res.json(dbPost);
+    });
+  });
+  // POST route for adding a route to favorites table
+  app.post("/members/posts", function (req, res) {
+    db.Favorites.create({
+      routeId: req.body.routeId,
+      userId: req.body.user.id,
+      createdBy: req.user.id,
+    })
+      .then(function (results) {
+        res.json(results);
+      })
+      .catch(function (err) {
+        res.json(err);
+      });
+  });
+  app.post("/api/signup", (req, res) => {
+    db.User.create({
+      email: req.body.email,
+      password: req.body.password,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      city: req.body.city,
+      state: req.body.state,
+      zip: req.body.zip,
+      wantsEmail: false,
+    })
+      .then(() => {
+        res.redirect(307, "/api/login");
+      })
+      .catch((err) => {
+        res.status(401).json(err.message);
+      });
+  });
+  //****************** PUT ROUTES ****************** /
+  app.put("/api/signuph", function (req, res) {
+    db.User.update({
+      wantsEmail: true,
+    }).then(function (data) {
+      res.json(data);
     });
   });
 };

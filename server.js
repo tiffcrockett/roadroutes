@@ -28,14 +28,14 @@ require("./routes/api-routes.js")(app);
 const transporter = nodemailer.createTransport({
   service: "hotmail",
   auth: {
-    user: "Road_Routes@outlook.com",
+    user: "roadroutes_bootcamp@outlook.com",
     pass: "fullstack123",
   },
 });
 
 function sendEmail(mail) {
   var mailOptions = {
-    from: "Road_Routes@outlook.com",
+    from: "roadroutes_bootcamp@outlook.com",
     bcc: mail.bcc,
     subject: mail.subject,
     text: mail.text,
@@ -51,6 +51,9 @@ function sendEmail(mail) {
 app.post("/api/post/email", function (req, res) {
   db.User.findAll({
     attributes: ["email"],
+    where: {
+      wantsEmail: true,
+    },
   }).then(function (data) {
     var emailList = [];
     for (var i = 0; i < data.length; i++) {
@@ -62,8 +65,8 @@ app.post("/api/post/email", function (req, res) {
       text:
         "A user has posted a new route online. Head over to Road Routes and check it out!",
     };
+    console.log(mail);
     sendEmail(mail);
-    res.redirect("/");
   });
 });
 
