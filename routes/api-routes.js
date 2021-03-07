@@ -37,20 +37,7 @@ module.exports = function (app) {
       });
   });
 
-  // Route for adding a route to favorites table
-  app.post("/members/posts", function (req, res) {
-    db.Favorites.create({
-      routeId: req.body.routeId,
-      userId: req.body.user.id,
-      createdBy: req.user.id,
-    })
-      .then(function (results) {
-        res.json(results);
-      })
-      .catch(function (err) {
-        res.json(err);
-      });
-  });
+  //****************** GET ROUTES ****************** /
 
   // Route to retrieve all favorites on login
   app.get("/members", async function (req, res) {
@@ -110,7 +97,7 @@ module.exports = function (app) {
     });
   });
 
-  // GET route to retrieve data for specific state AND city
+  // GET route to retrieve data for specific state AND city sorted by ascending distance
   app.get("/api/posts/locationAscending/:city/:state", function (req, res) {
     db.Routes.findAll({
       where: {
@@ -122,7 +109,7 @@ module.exports = function (app) {
       res.json(dbPost);
     });
   });
-
+  // GET route to retrieve data for specific state AND city sorted by descending distance
   app.get("/api/posts/locationDescending/:city/:state", function (req, res) {
     db.Routes.findAll({
       where: {
@@ -134,9 +121,26 @@ module.exports = function (app) {
       res.json(dbPost);
     });
   });
+  // GET route to find all cities that have been added to the database
+  app.get("/api/city", function (req, res) {
+    db.Routes.findAll({
+      attributes: ["routeCity"],
+    }).then(function (dbPost) {
+      res.json(dbPost);
+    });
+  });
+  // GET route to find all states that have been added to the database
+  app.get("/api/state", function (req, res) {
+    db.Routes.findAll({
+      attributes: ["routeState"],
+    }).then(function (dbPost) {
+      res.json(dbPost);
+    });
+  });
+  //****************** POST ROUTES ****************** /
 
   // POST route to send inputed user data to the server
-  app.post("/api/posts", function (req, res) {
+  app.post("/api/posts/newRoute", function (req, res) {
     db.Routes.create({
       routeName: req.body.routeName,
       routeState: req.body.routeState,
@@ -148,20 +152,18 @@ module.exports = function (app) {
       res.json(dbPost);
     });
   });
-
-  app.get("/api/city", function (req, res) {
-    db.Routes.findAll({
-      attributes: ["routeCity"],
-    }).then(function (dbPost) {
-      res.json(dbPost);
-    });
-  });
-
-  app.get("/api/state", function (req, res) {
-    db.Routes.findAll({
-      attributes: ["routeState"],
-    }).then(function (dbPost) {
-      res.json(dbPost);
-    });
+  // POST route for adding a route to favorites table
+  app.post("/members/posts", function (req, res) {
+    db.Favorites.create({
+      routeId: req.body.routeId,
+      userId: req.body.user.id,
+      createdBy: req.user.id,
+    })
+      .then(function (results) {
+        res.json(results);
+      })
+      .catch(function (err) {
+        res.json(err);
+      });
   });
 };
