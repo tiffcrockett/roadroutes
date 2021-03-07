@@ -22,9 +22,7 @@ $(document).ready(function () {
     getPosts(searchCity, searchState);
   });
   // On click to show directions specific to the ID of the post
-  $(document).on("click", "button.save.btn.btn-success", function () {
-    savePost();
-  });
+  $(document).on("click", "button.save.btn.btn-success", savePost);
   // Calling functions to display all cities and states in the DB and adding to the option drowdown
   getCities();
   getStates();
@@ -108,10 +106,17 @@ $(document).ready(function () {
     }
   }
   // Function to GET data for the specific ID of the generated post to show the directions
+  // Function to add to favorites
+  var favorites = {
+    routeId: 
+  }
+  function addToFavorites(id) {
+    $.post("/members/posts");
+  }
   // Function to save post to the users favorites
   function savePost() {
     var currentPost = $(this).parent().parent().data("post");
-    console.log(currentPost);
+    console.log(currentPost.id);
   }
 
   // Function to dynamically generate the rows creating HTML elements
