@@ -21,6 +21,10 @@ $(document).ready(function () {
     searchState = stateDropDown.val();
     getPosts(searchCity, searchState);
   });
+  // On click to show directions specific to the ID of the post
+  $(document).on("click", "button.save.btn.btn-success", function () {
+    savePost();
+  });
   // Calling functions to display all cities and states in the DB and adding to the option drowdown
   getCities();
   getStates();
@@ -103,6 +107,13 @@ $(document).ready(function () {
       stateDropDown.append(option);
     }
   }
+  // Function to GET data for the specific ID of the generated post to show the directions
+  // Function to save post to the users favorites
+  function savePost() {
+    var currentPost = $(this).parent().parent().data("post");
+    console.log(currentPost);
+  }
+
   // Function to dynamically generate the rows creating HTML elements
   function createRows(post) {
     // Creating main card container to hold all of the post information
@@ -113,6 +124,7 @@ $(document).ready(function () {
     postCardHead.addClass("card-header");
     // Title, directional and route step text containing elements
     var postTitle = $("<h3>");
+    postTitle.addClass("directions");
     var postCardBody = $("<div>");
     postCardBody.addClass("card-body");
     var postBody = $("<p>");
@@ -125,7 +137,7 @@ $(document).ready(function () {
     saveBtn.text("Save to favorites");
     saveBtn.addClass("save btn btn-success");
     // Setting text values from DB to fill the containers
-    postTitle.text(post.routeName + " ");
+    postTitle.text(post.routeName);
     postBody.text(post.routeSteps);
     postCity.text(post.routeCity);
     postState.text(post.routeState);

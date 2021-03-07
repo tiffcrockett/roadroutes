@@ -69,10 +69,10 @@ module.exports = function (app) {
   });
 
   // GET route to retrieve data for a specific ID in the database
-  app.get("/api/posts/:state", function (req, res) {
+  app.get("/api/posts/:id", function (req, res) {
     db.Routes.findAll({
       where: {
-        routeState: req.params.state,
+        id: req.params.id,
       },
     }).then(function (dbPost) {
       res.json(dbPost);
