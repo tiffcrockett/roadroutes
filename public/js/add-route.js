@@ -34,7 +34,7 @@ $(document).ready(function () {
       !routeDistanceInput.val() ||
       !routeCityInput.val() ||
       !routeStateInput.val() ||
-      !createdByInput.val()
+      !createdByInput.val().trim()
     ) {
       return;
     }
@@ -45,7 +45,7 @@ $(document).ready(function () {
       routeDistance: routeDistanceInput.val(),
       routeCity: routeCityInput.val(),
       routeState: routeStateInput.val(),
-      createdBy: createdByInput.val(),
+      createdBy: createdByInput.val().trim(),
     };
 
     console.log(newRoute);

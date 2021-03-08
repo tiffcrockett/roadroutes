@@ -65,7 +65,17 @@ function createRows(post) {
   postCardContainer.css({
     "background-color": "#f8f9f9",
     "margin-bottom": "15px",
-  });
+  }); 
+  var saveBtn = $("<button>");
+  saveBtn.text("Save");
+  saveBtn.addClass("save btn btn-success");
+  saveBtn.css({
+    "font-size": "small",
+    'margin-top': "-45px",
+    "padding": "3px",
+    float: "right",
+  });  
+  
   var postCardBody = $("<div>");
   postCardBody.addClass("card-body");
   postCardBody.css({
@@ -93,14 +103,13 @@ function createRows(post) {
   var postArea = $("<small>");
   // Save button to add to favorites
   var saveBtn = $("<button>");
-  saveBtn.text("Save");
-  saveBtn.addClass("save btn btn-success");
-  saveBtn.css({
+    saveBtn.text("Save");
+    saveBtn.addClass("save btn btn-success");
+    saveBtn.css({
     "font-size": "small",
-    "margin-top": "-45px",
-    padding: "3px",
+    "padding": "2px",
     float: "right",
-  });
+    });  
   // Setting text values from DB to fill the containers
   postTitle.text(post.routeName + " ");
   postCreatedBy.text(post.createdBy);

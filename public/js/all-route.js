@@ -150,17 +150,14 @@ $(document).ready(function () {
   function createRows(post) {
     // Creating main card container to hold all of the post information
     var postCardContainer = $("<div>");
-    postCardContainer.addClass("card");
-
-    // Card header attache to main post card
-    var postCardHead = $("<div>");
-    postCardHead.addClass("card-header");
-
+    postCardContainer.addClass("card"); 
     postCardContainer.css({
       "background-color": "#f8f9f9",
-      "margin-bottom": "15px",
+      "margin-bottom": "15px", 
     });
-
+    // Card body attaches to main post card
+    // var postCard Body = $("<div>");
+    // Title, directional and route step text containing elements
     var postCardBody = $("<div>");
     postCardBody.addClass("card-body");
     postCardBody.css({
@@ -175,11 +172,21 @@ $(document).ready(function () {
       color: "blue",
     });
 
-    var postBody = $("<small>");
+     // Save button to add to favorites
+    var saveBtn = $("<button>");
+    saveBtn.text("Save");
+    saveBtn.addClass("save btn btn-success");
+    saveBtn.css({
+    "font-size": "small",
+    "padding": "2px",
+    float: "right",
+    });  
+    var postTitle = $("<h6>");
+   
     var postCity = $("<small>");
     postCity.css({
-      "margin-right": "4px",
-    });
+      "margin-right": "8px",
+    }); 
     var postState = $("<small>");
     postState.css({
       "margin-right": "12px",
@@ -187,49 +194,43 @@ $(document).ready(function () {
     var postDistance = $("<small>");
     postDistance.css({
       "margin-right": "12px",
-    });
+    }); 
     var postArea = $("<small>");
-    // Save button to add to favorites
-    var saveBtn = $("<button>");
-    saveBtn.text("Save");
-    saveBtn.addClass("save btn btn-success");
-    saveBtn.css({
-      "font-size": "small",
-
-      padding: "2px",
-      "margin-top": "-31px",
-      "margin-right": "4px",
-      float: "right",
-      position: "relative",
+    var postCreatedBy = $("<small>");
+    postCreatedBy.css({
+      float:"right",
+      color: "blue",
     });
+    
+    var postBody = $("<small>");
+
 
     // Setting text values from DB to fill the containers
 
     postTitle.text(post.routeName + " ");
-    postCreatedBy.text(post.createdBy);
-    postBody.text(post.routeSteps);
     postCity.text(post.routeCity);
     postState.text(post.routeState);
     postDistance.text(post.routeDistance + " MI");
+    postArea.text("Area: " + post.routeArea);  
+    postCreatedBy.text("Added by: " + post.createdBy);
 
-    postArea.text("Area: " + post.routeArea);
+    postBody.text(post.routeSteps);
 
     // Appending all items to display appropriately
-    postCardBody.append(postTitle);
-    postCardBody.append(postCreatedBy);
     postCardBody.append(saveBtn);
+    postCardBody.append(postTitle); 
     postCardBody.append(postCity);
-    postCardBody.append(postState);
+    postCardBody.append(postState); 
     postCardBody.append(postDistance);
+    postCardBody.append(postArea); 
+    postCardBody.append(postCreatedBy);
 
-    postCardBody.append(postArea);
 
     // postCardContainer.append(postCardHead);
     postCardContainer.append(postCardBody);
     postCardContainer.data("post", post);
     return postCardContainer;
   }
-  // Function to dynamically create modal with the directions
 
   function renderDirections(singlePost) {
     postContainer.empty();
