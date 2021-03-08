@@ -1,8 +1,7 @@
-$(document).ready(function () { 
-  $.get("/api/user_data").then(function (data) { 
-  $(".member-name").text(data.email.split('@')[0]);
+$(document).ready(function () {  
+  $.get("/api/user_data").then(function (data) {
+    $(".member-name").text(data.email.split('@')[0]);
   }); 
-  
   // All route container to hold all of our posts, cities and states
   var postContainer = $(".all-routes-container");
   var cityDropDown = $("#dbCity");
@@ -118,8 +117,12 @@ $(document).ready(function () {
     });
    
     var postCardBody = $("<div>");
-    postCardBody.addClass("card-body"); 
-    var postTitle = $("<h4>");
+    postCardBody.addClass("card-body");
+    postCardBody.css({
+      "padding": "8px",
+    }); 
+    var postTitle = $("<h5>");
+    var postEmail = $("13px");
     var postBody = $("<small>");
     var postCity = $("<small>");
     postCity.css({
@@ -127,34 +130,35 @@ $(document).ready(function () {
     });
     var postState = $("<small>");
     postState.css({
-      "margin-right": "30px",
+      "margin-right": "12px",
     });
     var postDistance = $("<small>");
     postDistance.css ({
-      "margin-right": "25px",
+      "margin-right": "12px",
     })
     var postArea = $("<small>");
     // Save button to add to favorites
     var saveBtn = $("<button>");
-    saveBtn.text("Save to Favs");
+    saveBtn.text("Save");
     saveBtn.addClass("save btn btn-success");
     saveBtn.css({
       "font-size": "small",
       "padding": "3px",
-      "margin-top": "-40px",
       float: "right",
     }); 
    
     // Setting text values from DB to fill the containers
     postTitle.text(post.routeName + " ");
+    postEmail.text(post.email);
     postBody.text(post.routeSteps);
     postCity.text(post.routeCity);
     postState.text(post.routeState);
     postDistance.text(post.routeDistance + " MI");
-    postArea.text("AREA: " + post.routeArea);  
+    postArea.text("Area: " + post.routeArea);  
 
     // Appending all items to display appropriately
     postCardBody.append(postTitle);
+    postCardBody.append(postEmail);
     postCardBody.append(saveBtn);
     postCardBody.append(postCity);
     postCardBody.append(postState);
@@ -164,7 +168,9 @@ $(document).ready(function () {
     
     // postCardContainer.append(postCardHead);
     postCardContainer.append(postCardBody);
-    postCardContainer.data("post", post);
+    postCardContainer.data("post", post); 
     return postCardContainer;
-  }
+  } 
+
+  
 });
