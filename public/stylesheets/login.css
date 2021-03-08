@@ -1,0 +1,50 @@
+ body{
+    background-color: #212529;
+    font-size: smaller;
+}    
+
+.container { 
+    width: 90%;
+    margin: 0 auto;
+} 
+.login {
+    margin-top:45px;
+}
+
+#header { 
+   
+    margin-left: 3px;
+    color: #0084ffda;
+    font-weight: bolder;
+    background-color: #212529;
+} 
+
+#logo {
+    margin-top: 4px;
+    height: 35px;
+    width: 35px;
+    z-index: 1;
+    margin-left: -7px;
+} 
+
+#tagline {
+    margin-top: 75px;
+}
+
+form.login { 
+    margin-top: 45px;
+}
+
+.btn {
+    margin: 105px 0 20px 0; 
+}
+
+#message {
+    margin-top: 15px;
+    font-size: 11px;
+    color: #60ce21;
+    text-align: center;
+} 
+
+
+
