@@ -1,6 +1,6 @@
-$(document).ready(function () { 
+$(document).ready(function () {
   $.get("/api/user_data").then(function (data) {
-    $(".member-name").text(data.email.split('@')[0]);
+    $(".member-name").text(data.email.split("@")[0]);
   });
   // Gets an optional query string from our url (i.e. ?post_id=23)
   var url = window.location.search;
@@ -22,7 +22,7 @@ $(document).ready(function () {
   var routeDistanceInput = $("#distance");
   var routeCityInput = $("#city");
   var routeStateInput = $("#state");
-  var createdByInput = $('#createdBy')
+  var createdByInput = $("#createdBy");
   var formSubmitInput = $("#add-form");
   //Submitting form
   $(formSubmitInput).on("submit", function handleFormSubmit(event) {
@@ -49,7 +49,7 @@ $(document).ready(function () {
     };
 
     console.log(newRoute);
-    // sendEmail();
+    sendEmail();
     submitPost(newRoute);
   });
   // Function to post to DB

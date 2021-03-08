@@ -1,10 +1,7 @@
-
-$(document).ready(function () {  
-
+$(document).ready(function () {
   $.get("/api/user_data").then(function (data) {
     $(".member-name").text(data.email.split("@")[0]);
   });
-
 
   // All route container to hold all of our posts, cities and states
   var postContainer = $(".all-routes-container");
@@ -29,7 +26,7 @@ $(document).ready(function () {
   // On click to save a specific post to your profile
   $(document).on("click", "button.save.btn.btn-success", savePost);
   // On click for opening modal for directions
-  $(document).on("click", "h5", openDirections);
+  $(document).on("click", "div.card-body", openDirections);
   // Calling functions to display all cities and states in the DB and adding to the option drowdown
   getCities();
   getStates();
@@ -117,7 +114,7 @@ $(document).ready(function () {
     $.get("/api/posts/" + id, function (data) {
       console.log(data);
       singlePost = data;
-      renderDirections();
+      renderDirections(singlePost);
     });
   }
   // Function to add to favorites
@@ -139,7 +136,7 @@ $(document).ready(function () {
   }
   // Function to open directions modal
   function openDirections() {
-    var currentPost = $(this).parent().parent().data("post");
+    var currentPost = $(this).parent().data("post");
 
     showDirections(currentPost.id);
   }
@@ -152,9 +149,6 @@ $(document).ready(function () {
     // Card header attache to main post card
     var postCardHead = $("<div>");
     postCardHead.addClass("card-header");
-    // Title, directional and route step text containing elements
-    var postTitle = $("<h3>");
-    postTitle.addClass("directions");
 
     postCardContainer.css({
       "background-color": "#f8f9f9",
@@ -164,15 +158,16 @@ $(document).ready(function () {
     var postCardBody = $("<div>");
     postCardBody.addClass("card-body");
     postCardBody.css({
-
-      "padding": "8px",
-    }); 
+      padding: "8px",
+    });
     var postTitle = $("<h6>");
+    // postTitle.attr("id", post.id);
+
     var postCreatedBy = $("<small>");
     postCreatedBy.css({
-      float:"right",
+      float: "right",
       color: "blue",
-    })
+    });
 
     var postBody = $("<small>");
     var postCity = $("<small>");
@@ -195,12 +190,12 @@ $(document).ready(function () {
     saveBtn.css({
       "font-size": "small",
 
-      "padding": "2px",
+      padding: "2px",
       "margin-top": "-31px",
       "margin-right": "4px",
-      "float": "right",
-      "position": "relative",
-    }); 
+      float: "right",
+      position: "relative",
+    });
 
     // Setting text values from DB to fill the containers
 
@@ -211,7 +206,7 @@ $(document).ready(function () {
     postState.text(post.routeState);
     postDistance.text(post.routeDistance + " MI");
 
-    postArea.text("Area: " + post.routeArea);  
+    postArea.text("Area: " + post.routeArea);
 
     // Appending all items to display appropriately
     postCardBody.append(postTitle);
@@ -221,7 +216,7 @@ $(document).ready(function () {
     postCardBody.append(postState);
     postCardBody.append(postDistance);
 
-    postCardBody.append(postArea); 
+    postCardBody.append(postArea);
 
     // postCardContainer.append(postCardHead);
     postCardContainer.append(postCardBody);
@@ -230,8 +225,33 @@ $(document).ready(function () {
   }
   // Function to dynamically create modal with the directions
 
+  function renderDirections(singlePost) {
+    postContainer.empty();
 
-  } 
-                  
-
+    var data = $("<div>");
+    var header = $("<h2>");
+    var routeText = singlePost.routeSteps;
+    console.log(routeText);
+    routeText = routeText.replace(/(?:\r\n|\r|\n)/g, "<br>");
+    console.log(routeText.replace(/(?:\r\n|\r|\n)/g, "<br>"));
+    header.text("Directions for " + singlePost.routeName);
+    data.html(routeText);
+    var goBack = $("<div>");
+    goBack.text("Back to search results");
+    goBack.addClass("save btn btn-success");
+    goBack.attr("id", "goBack");
+    goBack.css({ "margin-top": "10px" });
+    postContainer.append(header);
+    postContainer.append(data);
+    postContainer.append(goBack);
+  }
+  // Goes back to search parameters when clicked
+  $(document).on("click", "div#goBack.save.btn.btn-success", function () {
+    searchCity = cityDropDown.val();
+    searchState = stateDropDown.val();
+    getPosts(searchCity, searchState);
+  });
+  function nl2br(str) {
+    return str.replace(/(?:\r\n|\r|\n)/g, "<br>");
+  }
 });

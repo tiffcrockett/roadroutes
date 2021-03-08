@@ -144,7 +144,6 @@ module.exports = function (app) {
       routeId: req.body.routeId,
 
       userId: req.body.userId,
-
     })
       .then(function (results) {
         res.json(results);
@@ -153,7 +152,7 @@ module.exports = function (app) {
         res.json(err);
       });
   });
-  
+
   app.post("/api/signup", (req, res) => {
     db.User.create({
       email: req.body.email,
@@ -173,11 +172,13 @@ module.exports = function (app) {
       });
   });
   //****************** PUT ROUTES ****************** /
-  app.put("/api/signup", function (req, res) {
-    db.User.update({
-      wantsEmail: true,
-    }).then(function (data) {
-      res.json(data);
-    });
-  });
+  //   app.put("/api/signup", function (req, res) {
+  //     db.User.update({
+  //       where: {
+  //         wantsEmail: req.body.wantsEmail,
+  //       },
+  //     }).then(function (data) {
+  //       res.json(data);
+  //     });
+  //   });
 };
