@@ -16,7 +16,7 @@
 
 Road cycling enthusiast often seek variety in cycling routes to stave off boredom, help build endurance, and improve cadence.  The safest road routes are ones most traveled – drivers in the area typically expect cyclists and the routes are usually hassle-free. 
 
-ROADROUTES allows riders to post favorite routes to a shared database and to search and save routes they would like to ride – in their town or in other cities across the US – without social media or performance tracking software. 
+ROADROUTES allows riders to post favorite routes to a shared database and to search and save routes they would like to ride – in their town or in other cities across the US. 
 
 
 ## Webpage-Images
