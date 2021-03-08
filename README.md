@@ -35,8 +35,7 @@ No prior installation is required to properly use roadroutes. Simply head to the
 ## Usage
 
 1. Create an account with ROADROUTES and navigate the application using the navbar icons. 
- ![Navbar icons](https://github.com/tiffcrockett/roadroutes/blob/dev/public/images/rdrte-navicons.png)
-2. Loging into user account navigates to the Members page, which lists Your Saved Routes. This page is located with the HOME icon.
+2. Loging into user account navigates to the Members page, which lists Your Saved Routes. This page is located with the HOME icon. ![Navbar icons](https://github.com/tiffcrockett/roadroutes/blob/dev/public/images/rdrte-navicons.png)
 3. To add routes to Your Saved Routes, click the SEARCH icon to navigate to the All-Routes page.
 4. The All-Routes page lists all routes in the database and can be viewed by City and State. You can further SORT by route distance ascending or descending.  
 5. Each route is shown in a summary format that includes route name, distance, area of town, city, state, and profile name of route author.
