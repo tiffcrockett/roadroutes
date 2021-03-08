@@ -26,7 +26,7 @@ $(document).ready(function () {
   // On click to save a specific post to your profile
   $(document).on("click", "button.save.btn.btn-success", savePost);
   // On click for opening modal for directions
-  $(document).on("click", "h5", openDirections);
+  $(document).on("click", "div.card-body", openDirections);
   // Calling functions to display all cities and states in the DB and adding to the option drowdown
   getCities();
   getStates();
@@ -120,7 +120,7 @@ $(document).ready(function () {
     $.get("/api/posts/" + id, function (data) {
       console.log(data);
       singlePost = data;
-      renderDirections();
+      renderDirections(singlePost);
     });
   }
   // Function to add to favorites
@@ -142,7 +142,7 @@ $(document).ready(function () {
   }
   // Function to open directions modal
   function openDirections() {
-    var currentPost = $(this).parent().parent().data("post");
+    var currentPost = $(this).parent().data("post");
 
     showDirections(currentPost.id);
   }
@@ -155,9 +155,6 @@ $(document).ready(function () {
     // Card header attache to main post card
     var postCardHead = $("<div>");
     postCardHead.addClass("card-header");
-    // Title, directional and route step text containing elements
-    var postTitle = $("<h3>");
-    postTitle.addClass("directions");
 
     postCardContainer.css({
       "background-color": "#f8f9f9",
@@ -170,6 +167,8 @@ $(document).ready(function () {
       padding: "8px",
     });
     var postTitle = $("<h6>");
+    // postTitle.attr("id", post.id);
+
     var postCreatedBy = $("<small>");
     postCreatedBy.css({
       float: "right",
@@ -231,4 +230,35 @@ $(document).ready(function () {
     return postCardContainer;
   }
   // Function to dynamically create modal with the directions
+
+  function renderDirections(singlePost) {
+    postContainer.empty();
+
+    var data = $("<div>");
+    var header = $("<h2>");
+    var routeText = singlePost.routeSteps;
+    routeText = routeText.split("\\n").join("<br>");
+
+    console.log(routeText);
+    header.text("Directions for " + singlePost.routeName);
+    data.html(routeText);
+    var goBack = $("<div>");
+    goBack.text("Back to search results");
+    goBack.addClass("save btn btn-success");
+    goBack.attr("id", "goBack");
+    goBack.css({ "margin-top": "10px" });
+    postContainer.append(header);
+    postContainer.append(data);
+    postContainer.append(goBack);
+  }
+  // Goes back to search parameters when clicked
+  $(document).on("click", "div#goBack.save.btn.btn-success", function () {
+    searchCity = cityDropDown.val();
+    searchState = stateDropDown.val();
+    getPosts(searchCity, searchState);
+  });
+  function nl2br(str) {
+    return str.replace(/(?:\r\n|\r|\n)/g, "<br>");
+  }
+
 });

@@ -36,7 +36,7 @@ const transporter = nodemailer.createTransport({
 function sendEmail(mail) {
   var mailOptions = {
     from: "roadroutes_bootcamp@outlook.com",
-    bcc: mail.bcc,
+    to: mail.bcc,
     subject: mail.subject,
     text: mail.text,
   };

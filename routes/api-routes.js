@@ -138,6 +138,7 @@ module.exports = function (app) {
     });
   });
 
+
   // Route to add a route as a favorite
   app.post("/members/post", async function (req, res) {
     await db.sequelize
@@ -152,6 +153,7 @@ INSERT INTO favorites (userId, routeId)
 VALUES ('${req.user.id}','${req.body.routeId}')`
       )
       .then((results) => {
+
         res.json(results);
       })
       .catch((err) => {
@@ -178,11 +180,13 @@ VALUES ('${req.user.id}','${req.body.routeId}')`
       });
   });
   //****************** PUT ROUTES ****************** /
-  app.put("/api/signup", function (req, res) {
-    db.User.update({
-      wantsEmail: true,
-    }).then(function (data) {
-      res.json(data);
-    });
-  });
+  //   app.put("/api/signup", function (req, res) {
+  //     db.User.update({
+  //       where: {
+  //         wantsEmail: req.body.wantsEmail,
+  //       },
+  //     }).then(function (data) {
+  //       res.json(data);
+  //     });
+  //   });
 };
