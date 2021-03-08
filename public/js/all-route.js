@@ -1,10 +1,7 @@
-
-$(document).ready(function () {  
-
+$(document).ready(function () {
   $.get("/api/user_data").then(function (data) {
     $(".member-name").text(data.email.split("@")[0]);
   });
-
 
   // All route container to hold all of our posts, cities and states
   var postContainer = $(".all-routes-container");
@@ -36,17 +33,23 @@ $(document).ready(function () {
   // Function using GET route to grab all the information from the Routes table on the DB
   function getPosts(city, state) {
     if (document.getElementById("asc").checked) {
-      $.get("/api/posts/locationAscending/" + city + "/" + state, function (data) {
-        console.log(data);
-        posts = data;
-        displayRows();
-      });
+      $.get(
+        "/api/posts/locationAscending/" + city + "/" + state,
+        function (data) {
+          console.log(data);
+          posts = data;
+          displayRows();
+        }
+      );
     } else {
-      $.get("/api/posts/locationDescending/" + city + "/" + state, function (data) {
-        console.log(data);
-        posts = data;
-        displayRows();
-      });
+      $.get(
+        "/api/posts/locationDescending/" + city + "/" + state,
+        function (data) {
+          console.log(data);
+          posts = data;
+          displayRows();
+        }
+      );
     }
   }
   // Function using get route to grab all cities that have been added to the DB
@@ -164,15 +167,14 @@ $(document).ready(function () {
     var postCardBody = $("<div>");
     postCardBody.addClass("card-body");
     postCardBody.css({
-
-      "padding": "8px",
-    }); 
+      padding: "8px",
+    });
     var postTitle = $("<h6>");
     var postCreatedBy = $("<small>");
     postCreatedBy.css({
-      float:"right",
+      float: "right",
       color: "blue",
-    })
+    });
 
     var postBody = $("<small>");
     var postCity = $("<small>");
@@ -195,12 +197,12 @@ $(document).ready(function () {
     saveBtn.css({
       "font-size": "small",
 
-      "padding": "2px",
+      padding: "2px",
       "margin-top": "-31px",
       "margin-right": "4px",
-      "float": "right",
-      "position": "relative",
-    }); 
+      float: "right",
+      position: "relative",
+    });
 
     // Setting text values from DB to fill the containers
 
@@ -211,7 +213,7 @@ $(document).ready(function () {
     postState.text(post.routeState);
     postDistance.text(post.routeDistance + " MI");
 
-    postArea.text("Area: " + post.routeArea);  
+    postArea.text("Area: " + post.routeArea);
 
     // Appending all items to display appropriately
     postCardBody.append(postTitle);
@@ -221,7 +223,7 @@ $(document).ready(function () {
     postCardBody.append(postState);
     postCardBody.append(postDistance);
 
-    postCardBody.append(postArea); 
+    postCardBody.append(postArea);
 
     // postCardContainer.append(postCardHead);
     postCardContainer.append(postCardBody);
@@ -229,9 +231,4 @@ $(document).ready(function () {
     return postCardContainer;
   }
   // Function to dynamically create modal with the directions
-
-
-  } 
-                  
-
 });
