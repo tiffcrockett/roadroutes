@@ -9,6 +9,7 @@ $(document).ready(function () {
   var states;
   var searchCity;
   var searchState;
+  var singlePost;
   // Calling all posts to display on the screen on click
   var search = $("#srchbtn");
   $(search).on("click", function () {
@@ -21,7 +22,7 @@ $(document).ready(function () {
   // On click to save a specific post to your profile
   $(document).on("click", "button.save.btn.btn-success", savePost);
   // On click for opening modal for directions
-
+  $(document).on("click", "h3.directions", openDirections);
   // Calling functions to display all cities and states in the DB and adding to the option drowdown
   getCities();
   getStates();
@@ -105,8 +106,14 @@ $(document).ready(function () {
     }
   }
   // Function to GET data for the specific ID of the generated post to show the directions
+  function showDirections(id) {
+    $.get("/api/posts/" + id, function (data) {
+      console.log(data);
+      singlePost = data;
+      renderDirections();
+    });
+  }
   // Function to add to favorites
-
   function addToFavorites(id) {
     $.post("/members/posts", id, function () {
       window.location.href = "/members";
@@ -123,7 +130,12 @@ $(document).ready(function () {
     };
     addToFavorites(favorites);
   }
+  // Function to open directions modal
+  function openDirections() {
+    var currentPost = $(this).parent().parent().data("post");
 
+    showDirections(currentPost.id);
+  }
   // Function to dynamically generate the rows creating HTML elements
   function createRows(post) {
     // Creating main card container to hold all of the post information
@@ -166,4 +178,5 @@ $(document).ready(function () {
     postCardContainer.data("post", post);
     return postCardContainer;
   }
+  // Function to dynamically create modal with the directions
 });
