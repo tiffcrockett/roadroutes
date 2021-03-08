@@ -22,7 +22,7 @@ module.exports = function (app) {
   //****************** GET ROUTES ****************** /
 
   // Route to retrieve all favorites on login
-  app.get("/members", async function (req, res) {
+  app.get("/api/members", async function (req, res) {
     await db.sequelize
       .query(
         `USE roadroutes_db;
@@ -138,7 +138,6 @@ module.exports = function (app) {
     });
   });
 
-
   // Route to add a route as a favorite
   app.post("/members/post", async function (req, res) {
     await db.sequelize
@@ -153,7 +152,6 @@ INSERT INTO favorites (userId, routeId)
 VALUES ('${req.user.id}','${req.body.routeId}')`
       )
       .then((results) => {
-
         res.json(results);
       })
       .catch((err) => {
@@ -170,7 +168,6 @@ VALUES ('${req.user.id}','${req.body.routeId}')`
       city: req.body.city,
       state: req.body.state,
       zip: req.body.zip,
-      wantsEmail: false,
     })
       .then(() => {
         res.redirect(307, "/api/login");
@@ -180,13 +177,13 @@ VALUES ('${req.user.id}','${req.body.routeId}')`
       });
   });
   //****************** PUT ROUTES ****************** /
-  //   app.put("/api/signup", function (req, res) {
-  //     db.User.update({
-  //       where: {
-  //         wantsEmail: req.body.wantsEmail,
-  //       },
-  //     }).then(function (data) {
-  //       res.json(data);
-  //     });
-  //   });
+  app.put("/api/signup", function (req, res) {
+    db.User.update({
+      where: {
+        wantsEmail: req.body.email,
+      },
+    }).then(function (data) {
+      res.json(data);
+    });
+  });
 };
