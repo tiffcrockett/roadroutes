@@ -1,4 +1,5 @@
 
+USE roadroutes_db
 -- Inserting data into ROUTES table
 INSERT INTO routes (routeName, routeState, routeCity, routeArea, routeDistance, routeSteps, createdBy, createdAt, updatedAt) 
 VALUES ('Fish Creek Thoroughfare', 'TX', 'Canroe', 'East', '34mi','"Park in shopping plaza lot at Tanque Verde Rd and Catalina Hwy\nTurn left (E) onto E Tanque Verde Rd\nTurn right (S) onto Tanque Verde Loop Road \nTurn left (E) onto E Speedway Blvd\nTurn right (S) onto N Freeman Rd\nTurn left (S) onto S Old Spanish Trail\nBreak at Saguaro National Park E\nContinue (S) on S Old Spanish Trail \nTurn left (E) onto E Old Spanish Trail\nTurn right (W) onto S Pistol Hill Rd – climb the hill!!\nTurn right (N) onto S Camino Loma Alta \nTurn left (W) onto E Old Spanish Trail\nTurn right (N) onto S Old Spanish Trail\nTurn left (W) onto E Escalante Rd\nTurn right (N) onto S Houghton Rd\nTurn left (W) onto Tanque Verde Rd \nContinue to start location \nCyclists hang out a LeBuzz Café – in the plaza"', 'brandond','2021-2-27 1:19','2021-2-27 1:19');
@@ -29,4 +30,5 @@ VALUES ('2','2', '2021-2-27 1:19','2021-2-27 1:19');
 
 INSERT INTO favorites (userId, routeId, createdAt, updatedAt) 
 VALUES ('3','3', '2021-2-27 1:19','2021-2-27 1:19');
+
 
