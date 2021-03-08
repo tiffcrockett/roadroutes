@@ -231,9 +231,9 @@ $(document).ready(function () {
     var data = $("<div>");
     var header = $("<h2>");
     var routeText = singlePost.routeSteps;
+    routeText = routeText.split("\\n").join("<br>");
+
     console.log(routeText);
-    routeText = routeText.replace(/(?:\r\n|\r|\n)/g, "<br>");
-    console.log(routeText.replace(/(?:\r\n|\r|\n)/g, "<br>"));
     header.text("Directions for " + singlePost.routeName);
     data.html(routeText);
     var goBack = $("<div>");
