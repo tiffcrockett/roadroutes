@@ -2,10 +2,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM loaded! 🚀");
   // This file just does a GET request to figure out which user is logged in
-  // and updates the HTML on the page 
+  // and updates the HTML on the page
   $.get("/api/user_data").then(function (data) {
-    $(".member-name").text(data.email.split('@')[0]);
+    $(".member-name").text(data.email.split("@")[0]);
   });
+
+
 
   const favoritesContainer = document.querySelector(".favorites-container");
   // Variable to hold our posts
@@ -67,27 +69,27 @@ function createRows(post) {
   var postCardBody = $("<div>");
   postCardBody.addClass("card-body");
   postCardBody.css({
-    "padding": "8px",
-  }); 
+    padding: "8px",
+  });
   var postTitle = $("<h6>");
   var postCreatedBy = $("<small>");
   postCreatedBy.css({
-    float:"right",
+    float: "right",
     color: "blue",
-  })
+  });
   var postBody = $("<small>");
   var postCity = $("<small>");
   postCity.css({
-    "margin-right":"4px",
+    "margin-right": "4px",
   });
   var postState = $("<small>");
   postState.css({
     "margin-right": "12px",
   });
   var postDistance = $("<small>");
-  postDistance.css ({
+  postDistance.css({
     "margin-right": "12px",
-  })
+  });
   var postArea = $("<small>");
   // Save button to add to favorites
   var saveBtn = $("<button>");
@@ -95,10 +97,10 @@ function createRows(post) {
   saveBtn.addClass("save btn btn-success");
   saveBtn.css({
     "font-size": "small",
-    'margin-top': "-45px",
-    "padding": "3px",
+    "margin-top": "-45px",
+    padding: "3px",
     float: "right",
-  }); 
+  });
   // Setting text values from DB to fill the containers
   postTitle.text(post.routeName + " ");
   postCreatedBy.text(post.createdBy);
@@ -106,7 +108,7 @@ function createRows(post) {
   postCity.text(post.routeCity);
   postState.text(post.routeState);
   postDistance.text(post.routeDistance + " MI");
-  postArea.text("Area: " + post.routeArea);  
+  postArea.text("Area: " + post.routeArea);
   // Appending all items to display appropriately
   postCardBody.append(postTitle);
   postCardBody.append(postCreatedBy);
@@ -114,15 +116,15 @@ function createRows(post) {
   postCardBody.append(postCity);
   postCardBody.append(postState);
   postCardBody.append(postDistance);
-  postCardBody.append(postArea); 
+  postCardBody.append(postArea);
   // postCardContainer.append(postCardHead);
   postCardContainer.append(postCardBody);
-  postCardContainer.data("post", post); 
+  postCardContainer.data("post", post);
   return postCardContainer;
-} 
+}
 
- // This function is used to display the information that is grabbed from the GET request
- function displayRows() {
+// This function is used to display the information that is grabbed from the GET request
+function displayRows() {
   // Clearing post container to make sure there is not duplicate data being generated
   postContainer.empty();
   //Empty array to add post data
