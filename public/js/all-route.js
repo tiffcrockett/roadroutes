@@ -1,7 +1,7 @@
-$(document).ready(function () {  
+$(document).ready(function () {
   $.get("/api/user_data").then(function (data) {
-    $(".member-name").text(data.email.split('@')[0]);
-  }); 
+    $(".member-name").text(data.email.split("@")[0]);
+  });
   // All route container to hold all of our posts, cities and states
   var postContainer = $(".all-routes-container");
   var cityDropDown = $("#dbCity");
@@ -25,7 +25,7 @@ $(document).ready(function () {
   // On click to save a specific post to your profile
   $(document).on("click", "button.save.btn.btn-success", savePost);
   // On click for opening modal for directions
-  $(document).on("click", "h3.directions", openDirections);
+  $(document).on("click", "h5", openDirections);
   // Calling functions to display all cities and states in the DB and adding to the option drowdown
   getCities();
   getStates();
@@ -156,27 +156,27 @@ $(document).ready(function () {
       "background-color": "#f8f9f9",
       "margin-bottom": "15px",
     });
-  
+
     var postCardBody = $("<div>");
     postCardBody.addClass("card-body");
     postCardBody.css({
-      "padding": "8px",
-    }); 
+      padding: "8px",
+    });
     var postTitle = $("<h5>");
     var postEmail = $("13px");
     var postBody = $("<small>");
     var postCity = $("<small>");
     postCity.css({
-      "margin-right":"4px",
+      "margin-right": "4px",
     });
     var postState = $("<small>");
     postState.css({
       "margin-right": "12px",
     });
     var postDistance = $("<small>");
-    postDistance.css ({
+    postDistance.css({
       "margin-right": "12px",
-    })
+    });
     var postArea = $("<small>");
     // Save button to add to favorites
     var saveBtn = $("<button>");
@@ -184,10 +184,10 @@ $(document).ready(function () {
     saveBtn.addClass("save btn btn-success");
     saveBtn.css({
       "font-size": "small",
-      "padding": "3px",
+      padding: "3px",
       float: "right",
-    }); 
-   
+    });
+
     // Setting text values from DB to fill the containers
 
     postTitle.text(post.routeName + " ");
@@ -197,7 +197,7 @@ $(document).ready(function () {
     postCity.text(post.routeCity);
     postState.text(post.routeState);
     postDistance.text(post.routeDistance + " MI");
-    postArea.text("Area: " + post.routeArea);  
+    postArea.text("Area: " + post.routeArea);
 
     // Appending all items to display appropriately
     postCardBody.append(postTitle);
@@ -206,19 +206,13 @@ $(document).ready(function () {
     postCardBody.append(postCity);
     postCardBody.append(postState);
     postCardBody.append(postDistance);
-    postCardBody.append(postArea); 
+    postCardBody.append(postArea);
 
-    
     // postCardContainer.append(postCardHead);
     postCardContainer.append(postCardBody);
-    postCardContainer.data("post", post); 
+    postCardContainer.data("post", post);
     return postCardContainer;
-
   }
   // Function to dynamically create modal with the directions
-
-  } 
-
-  
-
+  function renderDirections(singlePost) {}
 });
