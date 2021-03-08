@@ -1,7 +1,6 @@
-$(document).ready(function() {
-
+$(document).ready(function () {
   $.get("/api/user_data").then(function (data) {
-    $(".member-name").text(data.email.split('@')[0]);
+    $(".member-name").text(data.email.split("@")[0]);
   });
 
   const url = window.location.search;
@@ -14,7 +13,4 @@ $(document).ready(function() {
   }
   // Need to add get route and rendering of all of the specific authors entries
   // Move over code from all-routes
-  
-
-})
-
+});

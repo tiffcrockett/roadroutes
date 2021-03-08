@@ -1,8 +1,8 @@
-$(document).ready(function () { 
-  $.get("/api/user_data").then(function (data) { 
-  $(".member-name").text(data.email.split('@')[0]);
-  }); 
-  
+$(document).ready(function () {
+  $.get("/api/user_data").then(function (data) {
+    $(".member-name").text(data.email.split("@")[0]);
+  });
+
   // All route container to hold all of our posts, cities and states
   var postContainer = $(".all-routes-container");
   var cityDropDown = $("#dbCity");
@@ -19,8 +19,6 @@ $(document).ready(function () {
   // Calling all posts to display on the screen on click
   var search = $("#srchbtn");
   $(search).on("click", function () {
-    console.log(stateDropDown.val());
-    console.log(cityDropDown);
     searchCity = cityDropDown.val();
     searchState = stateDropDown.val();
     getPosts(searchCity, searchState);
@@ -31,23 +29,26 @@ $(document).ready(function () {
   // Function using GET route to grab all the information from the Routes table on the DB
   function getPosts(city, state) {
     if ($(asc).checked) {
-      $.get("/api/posts/locationAscending/" + city + "/" + state, function (data) {
-        console.log(data);
-        posts = data;
-        displayRows();
-      });
+      $.get(
+        "/api/posts/locationAscending/" + city + "/" + state,
+        function (data) {
+          posts = data;
+          displayRows();
+        }
+      );
     } else {
-      $.get("/api/posts/locationDescending/" + city + "/" + state, function (data) {
-        console.log(data);
-        posts = data;
-        displayRows();
-      });
+      $.get(
+        "/api/posts/locationDescending/" + city + "/" + state,
+        function (data) {
+          posts = data;
+          displayRows();
+        }
+      );
     }
   }
   // Function using get route to grab all cities that have been added to the DB
   function getCities() {
     $.get("/api/city", function (data) {
-      console.log(data);
       cities = data;
       displayCities();
     });
@@ -55,7 +56,6 @@ $(document).ready(function () {
   // Function using get route to grab all states that have been added to the DB
   function getStates() {
     $.get("/api/state", function (data) {
-      console.log(data);
       states = data;
       displayStates();
     });
@@ -116,23 +116,23 @@ $(document).ready(function () {
       "background-color": "#f8f9f9",
       "margin-bottom": "15px",
     });
-   
+
     var postCardBody = $("<div>");
-    postCardBody.addClass("card-body"); 
+    postCardBody.addClass("card-body");
     var postTitle = $("<h4>");
     var postBody = $("<small>");
     var postCity = $("<small>");
     postCity.css({
-      "margin-right":"4px",
+      "margin-right": "4px",
     });
     var postState = $("<small>");
     postState.css({
       "margin-right": "30px",
     });
     var postDistance = $("<small>");
-    postDistance.css ({
+    postDistance.css({
       "margin-right": "25px",
-    })
+    });
     var postArea = $("<small>");
     // Save button to add to favorites
     var saveBtn = $("<button>");
@@ -140,18 +140,18 @@ $(document).ready(function () {
     saveBtn.addClass("save btn btn-success");
     saveBtn.css({
       "font-size": "small",
-      "padding": "3px",
+      padding: "3px",
       "margin-top": "-40px",
       float: "right",
-    }); 
-   
+    });
+
     // Setting text values from DB to fill the containers
     postTitle.text(post.routeName + " ");
     postBody.text(post.routeSteps);
     postCity.text(post.routeCity);
     postState.text(post.routeState);
     postDistance.text(post.routeDistance + " MI");
-    postArea.text("AREA: " + post.routeArea);  
+    postArea.text("AREA: " + post.routeArea);
 
     // Appending all items to display appropriately
     postCardBody.append(postTitle);
@@ -159,9 +159,8 @@ $(document).ready(function () {
     postCardBody.append(postCity);
     postCardBody.append(postState);
     postCardBody.append(postDistance);
-    postCardBody.append(postArea); 
+    postCardBody.append(postArea);
 
-    
     // postCardContainer.append(postCardHead);
     postCardContainer.append(postCardBody);
     postCardContainer.data("post", post);

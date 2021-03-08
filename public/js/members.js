@@ -4,9 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
   $.get("/api/user_data").then(function (data) {
-    $(".member-name").text(data.email.split('@')[0]);
+    $(".member-name").text(data.email.split("@")[0]);
   });
   const favoritesContainer = document.querySelector(".favorites-container");
+
   // Variable to hold our posts
   let posts;
   const getPosts = (author) => {
@@ -14,29 +15,22 @@ document.addEventListener("DOMContentLoaded", () => {
     if (authorId) {
       authorId = `/?author_id=${authorId}`;
     }
-    fetch(`/api/posts${authorId}`, {
+    fetch(`/members/posts${req.user.id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     })
-      .then((response) => response.json())
+      .then((response) => response.json())``
       .then((data) => {
         posts = data;
-        console.log("Success in getting posts:", data);
+        console.log("Success in getting favorites:", data);
         $("#hi").text(data[0].routeId);
       })
       .catch((error) => console.error("Error:", error));
   };
-  // Get a route post from a specific author
-  const url = window.location.search;
-  let authorId;
-  if (url.indexOf("?author_id=") !== -1) {
-    authorId = url.split("=")[1];
-    getPosts(authorId);
-  } else {
-    getPosts();
-  }
+
+
   // Helper function to display something when there are no posts
   const displayEmpty = (id) => {
     const query = window.location.search;
@@ -96,9 +90,8 @@ function createRows(post) {
   return postCardContainer;
 }
 
-
- // This function is used to display the information that is grabbed from the GET request
- function displayRows() {
+// This function is used to display the information that is grabbed from the GET request
+function displayRows() {
   // Clearing post container to make sure there is not duplicate data being generated
   postContainer.empty();
   //Empty array to add post data

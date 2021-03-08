@@ -1,6 +1,6 @@
-$(document).ready(function () { 
+$(document).ready(function () {
   $.get("/api/user_data").then(function (data) {
-    $(".member-name").text(data.email.split('@')[0]);
+    $(".member-name").text(data.email.split("@")[0]);
   });
   // Gets an optional query string from our url (i.e. ?post_id=23)
   var url = window.location.search;
