@@ -9,9 +9,6 @@ $(document).ready(function () {
   var states;
   var searchCity;
   var searchState;
-  //Ascending or Descending data storage
-  var asc = $("#asc");
-  var desc = $("desc");
   // Calling all posts to display on the screen on click
   var search = $("#srchbtn");
   $(search).on("click", function () {
@@ -21,14 +18,16 @@ $(document).ready(function () {
     searchState = stateDropDown.val();
     getPosts(searchCity, searchState);
   });
-  // On click to show directions specific to the ID of the post
+  // On click to save a specific post to your profile
   $(document).on("click", "button.save.btn.btn-success", savePost);
+  // On click for opening modal for directions
+
   // Calling functions to display all cities and states in the DB and adding to the option drowdown
   getCities();
   getStates();
   // Function using GET route to grab all the information from the Routes table on the DB
   function getPosts(city, state) {
-    if ($(asc).checked) {
+    if (document.getElementById("asc").checked) {
       $.get("/api/posts/locationAscending/" + city + "/" + state, function (data) {
         console.log(data);
         posts = data;
@@ -107,16 +106,22 @@ $(document).ready(function () {
   }
   // Function to GET data for the specific ID of the generated post to show the directions
   // Function to add to favorites
-  var favorites = {
-    routeId: 
-  }
+
   function addToFavorites(id) {
-    $.post("/members/posts");
+    $.post("/members/posts", id, function () {
+      window.location.href = "/members";
+    });
   }
   // Function to save post to the users favorites
   function savePost() {
     var currentPost = $(this).parent().parent().data("post");
     console.log(currentPost.id);
+    console.log(currentPost.createdBy);
+    var favorites = {
+      routeId: currentPost.id,
+      userId: currentPost.createdBy,
+    };
+    addToFavorites(favorites);
   }
 
   // Function to dynamically generate the rows creating HTML elements

@@ -138,7 +138,7 @@ module.exports = function (app) {
   app.post("/members/posts", function (req, res) {
     db.Favorites.create({
       routeId: req.body.routeId,
-      userId: req.body.user.id,
+      userId: req.body.userId,
     })
       .then(function (results) {
         res.json(results);
@@ -166,7 +166,7 @@ module.exports = function (app) {
       });
   });
   //****************** PUT ROUTES ****************** /
-  app.put("/api/signuph", function (req, res) {
+  app.put("/api/signup", function (req, res) {
     db.User.update({
       wantsEmail: true,
     }).then(function (data) {

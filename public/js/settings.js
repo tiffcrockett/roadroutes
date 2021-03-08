@@ -1,11 +1,11 @@
-$(document).ready(function () {
-  function updateWantsEmail() {
-    $.ajax({
-      url: "/api/signuph",
-      method: "PUT",
-      data: "",
-    }).then(alert("update captured"));
-  }
+// $(document).ready(function () {
+//   function updateWantsEmail() {
+//     $.ajax({
+//       url: "/api/signup",
+//       method: "PUT",
+//       data: "",
+//     }).then(console.log("it worked"));
+//   }
 
-  $("#wantsEmail").on("click", updateWantsEmail());
-});
+//   $("#emailYes").on("click", updateWantsEmail);
+// });
