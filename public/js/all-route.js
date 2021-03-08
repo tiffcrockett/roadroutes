@@ -1,7 +1,11 @@
-$(document).ready(function () {
+
+$(document).ready(function () {  
+
   $.get("/api/user_data").then(function (data) {
     $(".member-name").text(data.email.split("@")[0]);
   });
+
+
   // All route container to hold all of our posts, cities and states
   var postContainer = $(".all-routes-container");
   var cityDropDown = $("#dbCity");
@@ -160,10 +164,16 @@ $(document).ready(function () {
     var postCardBody = $("<div>");
     postCardBody.addClass("card-body");
     postCardBody.css({
-      padding: "8px",
-    });
-    var postTitle = $("<h5>");
-    var postEmail = $("13px");
+
+      "padding": "8px",
+    }); 
+    var postTitle = $("<h6>");
+    var postCreatedBy = $("<small>");
+    postCreatedBy.css({
+      float:"right",
+      color: "blue",
+    })
+
     var postBody = $("<small>");
     var postCity = $("<small>");
     postCity.css({
@@ -184,29 +194,34 @@ $(document).ready(function () {
     saveBtn.addClass("save btn btn-success");
     saveBtn.css({
       "font-size": "small",
-      padding: "3px",
-      float: "right",
-    });
+
+      "padding": "2px",
+      "margin-top": "-31px",
+      "margin-right": "4px",
+      "float": "right",
+      "position": "relative",
+    }); 
 
     // Setting text values from DB to fill the containers
 
     postTitle.text(post.routeName + " ");
-    postEmail.text(post.email);
-
+    postCreatedBy.text(post.createdBy);
     postBody.text(post.routeSteps);
     postCity.text(post.routeCity);
     postState.text(post.routeState);
     postDistance.text(post.routeDistance + " MI");
-    postArea.text("Area: " + post.routeArea);
+
+    postArea.text("Area: " + post.routeArea);  
 
     // Appending all items to display appropriately
     postCardBody.append(postTitle);
-    postCardBody.append(postEmail);
+    postCardBody.append(postCreatedBy);
     postCardBody.append(saveBtn);
     postCardBody.append(postCity);
     postCardBody.append(postState);
     postCardBody.append(postDistance);
-    postCardBody.append(postArea);
+
+    postCardBody.append(postArea); 
 
     // postCardContainer.append(postCardHead);
     postCardContainer.append(postCardBody);
@@ -214,5 +229,9 @@ $(document).ready(function () {
     return postCardContainer;
   }
   // Function to dynamically create modal with the directions
-  function renderDirections(singlePost) {}
+
+
+  } 
+                  
+
 });
