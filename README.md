@@ -26,7 +26,7 @@ ROADROUTES allows riders to post favorite routes to a shared database and to sea
 ![Screenshot of mobile webpage](https://github.com/tiffcrockett/roadroutes/blob/dev/public/images/rdrte-login.png)
 
 ### Desktop Screenshot
-![Screenshot of desktop webpage](https://github.com/tiffcrockett/roadroutes/blob/dev/public/images/rdrte-addpg.png)
+![Screenshot of desktop webpage](https://github.com/tiffcrockett/roadroutes/blob/dev/public/images/rdrte-addrte.png)
 
 ## Installation
 
