@@ -44,9 +44,8 @@ No prior installation is required to properly use roadroutes. Simply head to the
 7. Navigate BACK. Click SAVE button to add the route to Your Saved Routes.
 8. To share a favorite route by adding it to the All-Routes list, click [+] ADD icon to navigate to the Add-Route page.
 9. Enter route information on the Add-Route page and SAVE. 
-10. To view all routes added by a specific person, click on the Added By profile name on the route summary. 
-11. Click on the User-cog icon to navigate to the Settings page. There opt to receive an email notification when new routes are posted in your city.
-12. Click the {=> logout icon to exit the ROADROUTES app.
+10. Click on the User-cog icon to navigate to the Settings page. There opt to receive an email notification when new routes are posted in your city.
+11. Click the {=> logout icon to exit the ROADROUTES app.
 
 ## Technologies-Used
 
