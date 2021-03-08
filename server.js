@@ -36,7 +36,7 @@ const transporter = nodemailer.createTransport({
 function sendEmail(mail) {
   var mailOptions = {
     from: "roadroutes_bootcamp@outlook.com",
-    bcc: mail.bcc,
+    to: mail.bcc,
     subject: mail.subject,
     text: mail.text,
   };
@@ -51,6 +51,9 @@ function sendEmail(mail) {
 app.post("/api/post/email", function (req, res) {
   db.User.findAll({
     attributes: ["email"],
+    where: {
+      wantsEmail: 1,
+    },
   }).then(function (data) {
     var emailList = [];
     for (var i = 0; i < data.length; i++) {

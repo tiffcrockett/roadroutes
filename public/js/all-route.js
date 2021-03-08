@@ -1,10 +1,7 @@
-
-$(document).ready(function () {  
-
+$(document).ready(function () {
   $.get("/api/user_data").then(function (data) {
     $(".member-name").text(data.email.split("@")[0]);
   });
-
 
   // All route container to hold all of our posts, cities and states
   var postContainer = $(".all-routes-container");
@@ -29,24 +26,30 @@ $(document).ready(function () {
   // On click to save a specific post to your profile
   $(document).on("click", "button.save.btn.btn-success", savePost);
   // On click for opening modal for directions
-  $(document).on("click", "h5", openDirections);
+  $(document).on("click", "div.card-body", openDirections);
   // Calling functions to display all cities and states in the DB and adding to the option drowdown
   getCities();
   getStates();
   // Function using GET route to grab all the information from the Routes table on the DB
   function getPosts(city, state) {
     if (document.getElementById("asc").checked) {
-      $.get("/api/posts/locationAscending/" + city + "/" + state, function (data) {
-        console.log(data);
-        posts = data;
-        displayRows();
-      });
+      $.get(
+        "/api/posts/locationAscending/" + city + "/" + state,
+        function (data) {
+          console.log(data);
+          posts = data;
+          displayRows();
+        }
+      );
     } else {
-      $.get("/api/posts/locationDescending/" + city + "/" + state, function (data) {
-        console.log(data);
-        posts = data;
-        displayRows();
-      });
+      $.get(
+        "/api/posts/locationDescending/" + city + "/" + state,
+        function (data) {
+          console.log(data);
+          posts = data;
+          displayRows();
+        }
+      );
     }
   }
   // Function using get route to grab all cities that have been added to the DB
@@ -117,7 +120,7 @@ $(document).ready(function () {
     $.get("/api/posts/" + id, function (data) {
       console.log(data);
       singlePost = data;
-      renderDirections();
+      renderDirections(singlePost);
     });
   }
   // Function to add to favorites
@@ -139,7 +142,7 @@ $(document).ready(function () {
   }
   // Function to open directions modal
   function openDirections() {
-    var currentPost = $(this).parent().parent().data("post");
+    var currentPost = $(this).parent().data("post");
 
     showDirections(currentPost.id);
   }
@@ -147,38 +150,43 @@ $(document).ready(function () {
   function createRows(post) {
     // Creating main card container to hold all of the post information
     var postCardContainer = $("<div>");
-    postCardContainer.addClass("card");
-
-    // Card header attache to main post card
-    var postCardHead = $("<div>");
-    postCardHead.addClass("card-header");
-    // Title, directional and route step text containing elements
-    var postTitle = $("<h3>");
-    postTitle.addClass("directions");
-
+    postCardContainer.addClass("card"); 
     postCardContainer.css({
       "background-color": "#f8f9f9",
-      "margin-bottom": "15px",
+      "margin-bottom": "15px", 
     });
-
+    // Card body attaches to main post card
+    // var postCard Body = $("<div>");
+    // Title, directional and route step text containing elements
     var postCardBody = $("<div>");
     postCardBody.addClass("card-body");
     postCardBody.css({
-
-      "padding": "8px",
-    }); 
+      padding: "8px",
+    });
     var postTitle = $("<h6>");
+    // postTitle.attr("id", post.id);
+
     var postCreatedBy = $("<small>");
     postCreatedBy.css({
-      float:"right",
+      float: "right",
       color: "blue",
-    })
+    });
 
-    var postBody = $("<small>");
+     // Save button to add to favorites
+    var saveBtn = $("<button>");
+    saveBtn.text("Save");
+    saveBtn.addClass("save btn btn-success");
+    saveBtn.css({
+    "font-size": "small",
+    "padding": "2px",
+    float: "right",
+    });  
+    var postTitle = $("<h6>");
+   
     var postCity = $("<small>");
     postCity.css({
-      "margin-right": "4px",
-    });
+      "margin-right": "8px",
+    }); 
     var postState = $("<small>");
     postState.css({
       "margin-right": "12px",
@@ -186,52 +194,72 @@ $(document).ready(function () {
     var postDistance = $("<small>");
     postDistance.css({
       "margin-right": "12px",
-    });
-    var postArea = $("<small>");
-    // Save button to add to favorites
-    var saveBtn = $("<button>");
-    saveBtn.text("Save");
-    saveBtn.addClass("save btn btn-success");
-    saveBtn.css({
-      "font-size": "small",
-
-      "padding": "2px",
-      "margin-top": "-31px",
-      "margin-right": "4px",
-      "float": "right",
-      "position": "relative",
     }); 
+    var postArea = $("<small>");
+    var postCreatedBy = $("<small>");
+    postCreatedBy.css({
+      float:"right",
+      color: "blue",
+    });
+    
+    var postBody = $("<small>");
+
 
     // Setting text values from DB to fill the containers
 
     postTitle.text(post.routeName + " ");
-    postCreatedBy.text(post.createdBy);
-    postBody.text(post.routeSteps);
     postCity.text(post.routeCity);
     postState.text(post.routeState);
     postDistance.text(post.routeDistance + " MI");
-
     postArea.text("Area: " + post.routeArea);  
+    postCreatedBy.text("Added by: " + post.createdBy);
+
+    postBody.text(post.routeSteps);
 
     // Appending all items to display appropriately
-    postCardBody.append(postTitle);
-    postCardBody.append(postCreatedBy);
     postCardBody.append(saveBtn);
+    postCardBody.append(postTitle); 
     postCardBody.append(postCity);
-    postCardBody.append(postState);
+    postCardBody.append(postState); 
     postCardBody.append(postDistance);
-
     postCardBody.append(postArea); 
+    postCardBody.append(postCreatedBy);
+
 
     // postCardContainer.append(postCardHead);
     postCardContainer.append(postCardBody);
     postCardContainer.data("post", post);
     return postCardContainer;
   }
-  // Function to dynamically create modal with the directions
 
+  function renderDirections(singlePost) {
+    postContainer.empty();
 
-  } 
-                  
+    var data = $("<div>");
+    var header = $("<h2>");
+    var routeText = singlePost.routeSteps;
+    routeText = routeText.split("\\n").join("<br>");
+
+    console.log(routeText);
+    header.text("Directions for " + singlePost.routeName);
+    data.html(routeText);
+    var goBack = $("<div>");
+    goBack.text("Back to search results");
+    goBack.addClass("save btn btn-success");
+    goBack.attr("id", "goBack");
+    goBack.css({ "margin-top": "10px" });
+    postContainer.append(header);
+    postContainer.append(data);
+    postContainer.append(goBack);
+  }
+  // Goes back to search parameters when clicked
+  $(document).on("click", "div#goBack.save.btn.btn-success", function () {
+    searchCity = cityDropDown.val();
+    searchState = stateDropDown.val();
+    getPosts(searchCity, searchState);
+  });
+  function nl2br(str) {
+    return str.replace(/(?:\r\n|\r|\n)/g, "<br>");
+  }
 
 });
