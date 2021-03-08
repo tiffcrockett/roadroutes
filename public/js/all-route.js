@@ -33,17 +33,23 @@ $(document).ready(function () {
   // Function using GET route to grab all the information from the Routes table on the DB
   function getPosts(city, state) {
     if (document.getElementById("asc").checked) {
-      $.get("/api/posts/locationAscending/" + city + "/" + state, function (data) {
-        console.log(data);
-        posts = data;
-        displayRows();
-      });
+      $.get(
+        "/api/posts/locationAscending/" + city + "/" + state,
+        function (data) {
+          console.log(data);
+          posts = data;
+          displayRows();
+        }
+      );
     } else {
-      $.get("/api/posts/locationDescending/" + city + "/" + state, function (data) {
-        console.log(data);
-        posts = data;
-        displayRows();
-      });
+      $.get(
+        "/api/posts/locationDescending/" + city + "/" + state,
+        function (data) {
+          console.log(data);
+          posts = data;
+          displayRows();
+        }
+      );
     }
   }
   // Function using get route to grab all cities that have been added to the DB
@@ -254,4 +260,5 @@ $(document).ready(function () {
   function nl2br(str) {
     return str.replace(/(?:\r\n|\r|\n)/g, "<br>");
   }
+
 });
