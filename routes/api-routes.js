@@ -132,6 +132,7 @@ module.exports = function (app) {
       routeArea: req.body.routeArea,
       routeDistance: req.body.routeDistance,
       routeSteps: req.body.routeSteps,
+      createdBy: req.body.createdBy,
     }).then(function (dbPost) {
       res.json(dbPost);
     });

@@ -26,8 +26,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     createdBy: {
       type: DataTypes.STRING,
-      allowNull: true,
-      defaultValue: "Kimmy",
+      allowNull: false,
     },
   });
   return Routes;

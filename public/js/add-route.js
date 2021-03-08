@@ -22,6 +22,7 @@ $(document).ready(function () {
   var routeDistanceInput = $("#distance");
   var routeCityInput = $("#city");
   var routeStateInput = $("#state");
+  var createdByInput = $('#createdBy')
   var formSubmitInput = $("#add-form");
   //Submitting form
   $(formSubmitInput).on("submit", function handleFormSubmit(event) {
@@ -32,7 +33,8 @@ $(document).ready(function () {
       !routeAreaInput.val() ||
       !routeDistanceInput.val() ||
       !routeCityInput.val() ||
-      !routeStateInput.val()
+      !routeStateInput.val() ||
+      !createdByInput.val()
     ) {
       return;
     }
@@ -43,6 +45,7 @@ $(document).ready(function () {
       routeDistance: routeDistanceInput.val(),
       routeCity: routeCityInput.val(),
       routeState: routeStateInput.val(),
+      createdBy: createdByInput.val(),
     };
 
     console.log(newRoute);
