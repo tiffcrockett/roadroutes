@@ -1,3 +1,4 @@
+
 $(document).ready(function () {  
   $.get("/api/user_data").then(function (data) {
     $(".member-name").text(data.email.split('@')[0]);
@@ -11,5 +12,5 @@ $(document).ready(function () {
     }).then(alert("update captured"));
   }
 
-  $("#wantsEmail").on("click", updateWantsEmail());
-});
+//   $("#emailYes").on("click", updateWantsEmail);
+// });

@@ -14,9 +14,7 @@ $(document).ready(function () {
   var states;
   var searchCity;
   var searchState;
-  //Ascending or Descending data storage
-  var asc = $("#asc");
-  var desc = $("desc");
+  var singlePost;
   // Calling all posts to display on the screen on click
   var search = $("#srchbtn");
   $(search).on("click", function () {
@@ -26,12 +24,16 @@ $(document).ready(function () {
     searchState = stateDropDown.val();
     getPosts(searchCity, searchState);
   });
+  // On click to save a specific post to your profile
+  $(document).on("click", "button.save.btn.btn-success", savePost);
+  // On click for opening modal for directions
+  $(document).on("click", "h3.directions", openDirections);
   // Calling functions to display all cities and states in the DB and adding to the option drowdown
   getCities();
   getStates();
   // Function using GET route to grab all the information from the Routes table on the DB
   function getPosts(city, state) {
-    if ($(asc).checked) {
+    if (document.getElementById("asc").checked) {
       $.get("/api/posts/locationAscending/" + city + "/" + state, function (data) {
         console.log(data);
         posts = data;
@@ -108,15 +110,55 @@ $(document).ready(function () {
       stateDropDown.append(option);
     }
   }
+  // Function to GET data for the specific ID of the generated post to show the directions
+  function showDirections(id) {
+    $.get("/api/posts/" + id, function (data) {
+      console.log(data);
+      singlePost = data;
+      renderDirections();
+    });
+  }
+  // Function to add to favorites
+  function addToFavorites(id) {
+    $.post("/members/posts", id, function () {
+      window.location.href = "/members";
+    });
+  }
+  // Function to save post to the users favorites
+  function savePost() {
+    var currentPost = $(this).parent().parent().data("post");
+    console.log(currentPost.id);
+    console.log(currentPost.createdBy);
+    var favorites = {
+      routeId: currentPost.id,
+      userId: currentPost.createdBy,
+    };
+    addToFavorites(favorites);
+  }
+  // Function to open directions modal
+  function openDirections() {
+    var currentPost = $(this).parent().parent().data("post");
+
+    showDirections(currentPost.id);
+  }
   // Function to dynamically generate the rows creating HTML elements
   function createRows(post) {
     // Creating main card container to hold all of the post information
     var postCardContainer = $("<div>");
     postCardContainer.addClass("card");
+
+    // Card header attache to main post card
+    var postCardHead = $("<div>");
+    postCardHead.addClass("card-header");
+    // Title, directional and route step text containing elements
+    var postTitle = $("<h3>");
+    postTitle.addClass("directions");
+
     postCardContainer.css({
       "background-color": "#f8f9f9",
       "margin-bottom": "15px",
     });
+
     var postCardBody = $("<div>");
     postCardBody.addClass("card-body");
     postCardBody.css({
@@ -155,6 +197,7 @@ $(document).ready(function () {
       "position": "relative",
     }); 
     // Setting text values from DB to fill the containers
+
     postTitle.text(post.routeName + " ");
     postCreatedBy.text(post.createdBy);
     postBody.text(post.routeSteps);
@@ -174,5 +217,10 @@ $(document).ready(function () {
     postCardContainer.append(postCardBody);
     postCardContainer.data("post", post); 
     return postCardContainer;
+
+  }
+  // Function to dynamically create modal with the directions
+
   } 
+                  
 });
