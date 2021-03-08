@@ -1,8 +1,10 @@
+
 $(document).ready(function () {  
 
   $.get("/api/user_data").then(function (data) {
     $(".member-name").text(data.email.split("@")[0]);
   });
+
 
   // All route container to hold all of our posts, cities and states
   var postContainer = $(".all-routes-container");
@@ -27,7 +29,7 @@ $(document).ready(function () {
   // On click to save a specific post to your profile
   $(document).on("click", "button.save.btn.btn-success", savePost);
   // On click for opening modal for directions
-  $(document).on("click", "h3.directions", openDirections);
+  $(document).on("click", "h5", openDirections);
   // Calling functions to display all cities and states in the DB and adding to the option drowdown
   getCities();
   getStates();
@@ -162,6 +164,7 @@ $(document).ready(function () {
     var postCardBody = $("<div>");
     postCardBody.addClass("card-body");
     postCardBody.css({
+
       "padding": "8px",
     }); 
     var postTitle = $("<h6>");
@@ -170,19 +173,20 @@ $(document).ready(function () {
       float:"right",
       color: "blue",
     })
+
     var postBody = $("<small>");
     var postCity = $("<small>");
     postCity.css({
-      "margin-right":"4px",
+      "margin-right": "4px",
     });
     var postState = $("<small>");
     postState.css({
       "margin-right": "12px",
     });
     var postDistance = $("<small>");
-    postDistance.css ({
+    postDistance.css({
       "margin-right": "12px",
-    })
+    });
     var postArea = $("<small>");
     // Save button to add to favorites
     var saveBtn = $("<button>");
@@ -190,12 +194,14 @@ $(document).ready(function () {
     saveBtn.addClass("save btn btn-success");
     saveBtn.css({
       "font-size": "small",
+
       "padding": "2px",
       "margin-top": "-31px",
       "margin-right": "4px",
       "float": "right",
       "position": "relative",
     }); 
+
     // Setting text values from DB to fill the containers
 
     postTitle.text(post.routeName + " ");
@@ -204,7 +210,9 @@ $(document).ready(function () {
     postCity.text(post.routeCity);
     postState.text(post.routeState);
     postDistance.text(post.routeDistance + " MI");
+
     postArea.text("Area: " + post.routeArea);  
+
     // Appending all items to display appropriately
     postCardBody.append(postTitle);
     postCardBody.append(postCreatedBy);
@@ -212,15 +220,18 @@ $(document).ready(function () {
     postCardBody.append(postCity);
     postCardBody.append(postState);
     postCardBody.append(postDistance);
+
     postCardBody.append(postArea); 
+
     // postCardContainer.append(postCardHead);
     postCardContainer.append(postCardBody);
-    postCardContainer.data("post", post); 
+    postCardContainer.data("post", post);
     return postCardContainer;
-
   }
   // Function to dynamically create modal with the directions
 
+
   } 
                   
+
 });
