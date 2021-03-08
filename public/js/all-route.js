@@ -1,4 +1,7 @@
-$(document).ready(function () {
+$(document).ready(function () {  
+  $.get("/api/user_data").then(function (data) {
+    $(".member-name").text(data.email.split('@')[0]);
+  }); 
   // All route container to hold all of our posts, cities and states
   var postContainer = $(".all-routes-container");
   var cityDropDown = $("#dbCity");
@@ -141,42 +144,81 @@ $(document).ready(function () {
     // Creating main card container to hold all of the post information
     var postCardContainer = $("<div>");
     postCardContainer.addClass("card");
+
     // Card header attache to main post card
     var postCardHead = $("<div>");
     postCardHead.addClass("card-header");
     // Title, directional and route step text containing elements
     var postTitle = $("<h3>");
     postTitle.addClass("directions");
+
+    postCardContainer.css({
+      "background-color": "#f8f9f9",
+      "margin-bottom": "15px",
+    });
+  
     var postCardBody = $("<div>");
     postCardBody.addClass("card-body");
-    var postBody = $("<p>");
-    var postCity = $("<p>");
-    var postState = $("<p>");
+    postCardBody.css({
+      "padding": "8px",
+    }); 
+    var postTitle = $("<h5>");
+    var postEmail = $("13px");
+    var postBody = $("<small>");
+    var postCity = $("<small>");
+    postCity.css({
+      "margin-right":"4px",
+    });
+    var postState = $("<small>");
+    postState.css({
+      "margin-right": "12px",
+    });
     var postDistance = $("<small>");
+    postDistance.css ({
+      "margin-right": "12px",
+    })
     var postArea = $("<small>");
     // Save button to add to favorites
     var saveBtn = $("<button>");
-    saveBtn.text("Save to favorites");
+    saveBtn.text("Save");
     saveBtn.addClass("save btn btn-success");
+    saveBtn.css({
+      "font-size": "small",
+      "padding": "3px",
+      float: "right",
+    }); 
+   
     // Setting text values from DB to fill the containers
-    postTitle.text(post.routeName);
+
+    postTitle.text(post.routeName + " ");
+    postEmail.text(post.email);
+
     postBody.text(post.routeSteps);
     postCity.text(post.routeCity);
     postState.text(post.routeState);
-    postDistance.text(post.routeDistance);
-    postArea.text(post.routeArea);
+    postDistance.text(post.routeDistance + " MI");
+    postArea.text("Area: " + post.routeArea);  
+
     // Appending all items to display appropriately
-    postCardHead.append(postTitle);
-    postCardHead.append(saveBtn);
-    postCardHead.append(postCity);
-    postCardHead.append(postState);
-    postCardHead.append(postDistance);
-    postCardHead.append(postArea);
-    postCardBody.append(postBody);
-    postCardContainer.append(postCardHead);
+    postCardBody.append(postTitle);
+    postCardBody.append(postEmail);
+    postCardBody.append(saveBtn);
+    postCardBody.append(postCity);
+    postCardBody.append(postState);
+    postCardBody.append(postDistance);
+    postCardBody.append(postArea); 
+
+    
+    // postCardContainer.append(postCardHead);
     postCardContainer.append(postCardBody);
-    postCardContainer.data("post", post);
+    postCardContainer.data("post", post); 
     return postCardContainer;
+
   }
   // Function to dynamically create modal with the directions
+
+  } 
+
+  
+
 });

@@ -25,11 +25,13 @@ module.exports = function (app) {
   app.get("/members", async function (req, res) {
     await db.sequelize
       .query(
-        `SELECT * FROM routes 
-    INNER JOIN favorites
-    ON route.id = favorites.routeId
-    INNER JOIN user 
-    where user.id = ${req.user.id}`,
+        `USE roadroutes_db;
+        SELECT * FROM favorites 
+            INNER JOIN routes
+            ON routes.id = favorites.routeId
+            INNER JOIN users 
+            ON users.id = favorites.userId 
+            where users.id = ${req.user.id}`,
         { type: QueryTypes.SELECT }
       )
       .then((results) => {
@@ -134,11 +136,14 @@ module.exports = function (app) {
       res.json(dbPost);
     });
   });
+
   // POST route for adding a route to favorites table
   app.post("/members/posts", function (req, res) {
     db.Favorites.create({
       routeId: req.body.routeId,
+
       userId: req.body.userId,
+
     })
       .then(function (results) {
         res.json(results);
@@ -147,6 +152,7 @@ module.exports = function (app) {
         res.json(err);
       });
   });
+  
   app.post("/api/signup", (req, res) => {
     db.User.create({
       email: req.body.email,
