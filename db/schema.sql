@@ -7,13 +7,12 @@ USE roadroutes_db;
 -- (THIS WILL BE DONE IN SEQUELIZE BUT THIS IS USED A REFERENCE)
 CREATE TABLE routes (
     pkid INT NOT NULL AUTO_INCREMENT,
-    routeId INT NOT NULL,
     routeName VARCHAR(255) NOT NULL,
     routeState VARCHAR(255) NOT NULL,
     routeCity VARCHAR(255) NOT NULL,
     routeArea VARCHAR(255) NOT NULL,
     routeDistance INT NOT NULL,
-    routeSteps VARCHAR (1000) NOT NULL,
+    routeSteps VARCHAR (8000) NOT NULL,
     createdBy VARCHAR (255) NOT NULL,
     createdAt VARCHAR(255) NOT NULL,
     updatedAt VARCHAR(255) NOT NULL,
